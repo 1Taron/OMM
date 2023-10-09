@@ -1,0 +1,37 @@
+/* 주아체 (배민) .font_01 */
+@font-face {
+  font-family: "BMJUA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 한나체 (배민) .font_02 */
+@font-face {
+  font-family: "BMHANNAAir";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 어그로체 (샌드박스) .font_03 */
+@font-face {
+  font-family: "SBAggroB";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font_01 {
+  font-family: "BMJUA";
+}
+
+.font_02 {
+  font-family: "BMHANNAAir";
+}
+.font_03 {
+  font-family: "SBAggroB";
+}
