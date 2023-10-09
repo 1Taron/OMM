@@ -3,3 +3,34 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  background-color: var(--gray1);
+}
+
+:root {
+  --hdgreen: #d6e7cb;
+  --gray1: #f5f5f5;
+  --gray2: #d8d9da;
+  --gray6: #61677a;
+  --bluedark: #364f6b;
+  --pink: #fc5185;
+  --dark: #272829;
+
+  --mw: 1000px;
+}
+
+.mw_ex {
+  width: var(--mw);
+  height: 1080px;
+  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: auto;
+}

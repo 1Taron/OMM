@@ -1,0 +1,30 @@
+.hd {
+  background-color: var(--hdgreen);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+.hd_title {
+  font-size: 3rem;
+  font-style: italic;
+}
+
+#sideicon {
+  font-size: 3rem;
+  margin-left: 1rem;
+}
+
+#shopcart {
+  font-size: 3rem;
+  margin-right: 1rem;
+}
+
+.sd_myprofile {
+  border: 1px solid red;
+}
+
+.test01 {
+  background-color: blue;
+}
