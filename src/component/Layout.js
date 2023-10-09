@@ -5,6 +5,7 @@ export default function Layout() {
   return (
     <main className="layout_Mw">
       <Header />
+      <Outlet />
     </main>
   );
 }
