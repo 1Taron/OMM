@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 
 import {
   Drawer,
-  DrawerBody,
   DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   useDisclosure,
@@ -13,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import MyAvatar from "./MyAvatar";
+import NotifyCard from "./NotifyCard";
 
 export default function Sidebar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -60,21 +59,55 @@ export default function Sidebar() {
           <div className="sd_pf_exinfo">
             <div className="sd_pf_mypoint">
               <p className="exinfo_num font_01">0</p>
-              <p className="font_01">포인트</p>
+              <Link to={"/point"}>
+                <p className="font_01">포인트</p>
+              </Link>
             </div>
             <div className="sd_pf_mycoup">
               <p className="exinfo_num font_01">0</p>
-              <p className="font_01">쿠폰</p>
+              <Link to={"/coupon"}>
+                <p className="font_01">쿠폰</p>
+              </Link>
             </div>
           </div>
 
-          <div>주소</div>
+          <div className="sd_adress">
+            <div className="sd_adr_title font_01">주소</div>
+            <Link to={"/adress/"} className="sd_adr_content font_01">
+              전라북도 익산시 익산대로 460
+            </Link>
+          </div>
 
-          <DrawerBody>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-          </DrawerBody>
+          <div className="sd_remain">
+            <div className="sd_rem_orderhty">
+              <Link to={"/orderhistory"} className="font_01">
+                <p>주문 내역</p>
+              </Link>
+            </div>
+            <div className="sd_rem_config">
+              <Link to={"/config"} className="font_01">
+                <p>환경 설정</p>
+              </Link>
+            </div>
+          </div>
+
+          <div className="sd_notify">
+            <div className="sd_notify_container">
+              <p className="font_01">알림</p>
+              <div className="sd_notify_contentbox">
+                <NotifyCard />
+                <NotifyCard />
+                <NotifyCard />
+                <NotifyCard />
+                <NotifyCard />
+                <NotifyCard />
+                <NotifyCard />
+                <NotifyCard />
+                <NotifyCard />
+                <NotifyCard />
+              </div>
+            </div>
+          </div>
 
           <DrawerFooter>
             <Button colorScheme="red" m={"auto"}>

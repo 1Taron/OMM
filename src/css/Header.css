@@ -82,8 +82,102 @@
   color: var(--gray4);
 }
 
-.sd_pf_exinfo > * > p {
+.sd_pf_exinfo > * > * > p {
   font-size: 1.3rem;
 }
 
 /* 주소 영역 */
+.sd_adress {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.sd_adress .sd_adr_title {
+  width: 100%;
+  font-size: 1.6rem;
+}
+
+.sd_adress .sd_adr_content {
+  width: 100%;
+  font-size: 1rem;
+  position: relative;
+}
+
+/* 주문내역 환경설정 영역 */
+.sd_remain {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.5rem;
+  align-items: center;
+  margin-left: 40px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.sd_remain .sd_rem_orderhty {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.sd_remain .sd_rem_orderhty p::before {
+  content: "\f543";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  /* font weight 값
+  Solid -> 900 Regular -> 400 Light -> 300 
+  */
+  color: var(--bluedark);
+  padding-right: 10px;
+  padding-left: 3px;
+}
+
+.sd_remain .sd_rem_config {
+  width: 100%;
+}
+
+.sd_remain .sd_rem_config p::before {
+  content: "\f013";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  /* font weight 값
+  Solid -> 900 Regular -> 400 Light -> 300 
+  */
+  color: var(--bluedark);
+  padding-right: 5px;
+}
+
+/* 알림 영역 */
+.sd_notify {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.sd_notify .sd_notify_container {
+  background-color: var(--hdgreen);
+  width: 80%;
+  height: 380px;
+}
+.sd_notify .sd_notify_container p {
+  font-size: 1.5rem;
+}
+
+.sd_notify .sd_notify_contentbox {
+  width: 90%;
+  height: 340px;
+  margin: auto;
+  overflow: scroll;
+}
+/* 스크롤 바 없애기 */
+/* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
+.sd_notify .sd_notify_contentbox::-webkit-scrollbar {
+  display: none;
+}
+.sd_notify .sd_notify_contentbox {
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
+/* ---------------------*/

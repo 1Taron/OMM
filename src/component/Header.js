@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import "../css/NotifyCard.css";
 
 export default function Header() {
   return (
