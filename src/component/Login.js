@@ -3,6 +3,7 @@ import Header from "./Header";
 import "../css/Header.css";
 import "../css/login.css"
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
     const { username, setUserName } = useState("");
@@ -14,7 +15,7 @@ export default function Login() {
             <Outlet />
             <form className="login">
                 <div className="login_container">
-                    <img className="mainImage" alt="MainLogo" src="img/logo.svg" />
+                    <img className="mainImage_1" alt="MainLogo" src="img/logo.svg" />
                     <input
                         type={"text"}
                         placeholder="아이디"
@@ -25,8 +26,11 @@ export default function Login() {
                         placeholder="비밀번호"
                         value={password}
                     ></input>
-                    <button className="login_btn">로그인</button>
-                    <button className="register_btn">회원가입</button>
+                    <button className="login_btn" >로그인</button>
+                    <Link to="/register">
+                        <button className="register_btn">회원가입</button>
+                    </Link>
+
                 </div>
             </form>
         </main>
