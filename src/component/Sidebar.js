@@ -41,19 +41,34 @@ export default function Sidebar() {
           <div className="sd_myprofile">
             <div className="sd_pf_atr">
               <MyAvatar />
-              <button className="sd_pf_mybtn">내 정보</button>
+              <Button
+                className="sd_pf_mybtn"
+                width="100px"
+                height="25px"
+                bg="teal.400"
+                _hover={{ bg: "teal.300" }}
+                border="none"
+              >
+                내 정보
+              </Button>
             </div>
             <div className="sd_pf_info">
-              <p>이름</p>
-              <p>등급</p>
+              <p className="font_01">이름</p>
+              <p className="font_01">등급</p>
             </div>
-            {/* <div className="sd_pf_exinfo">
-              <div className="sd_pf_mygift">
-                <p>포인트</p>
-                <p>쿠폰</p>
-              </div>
-            </div> */}
           </div>
+          <div className="sd_pf_exinfo">
+            <div className="sd_pf_mypoint">
+              <p className="exinfo_num font_01">0</p>
+              <p className="font_01">포인트</p>
+            </div>
+            <div className="sd_pf_mycoup">
+              <p className="exinfo_num font_01">0</p>
+              <p className="font_01">쿠폰</p>
+            </div>
+          </div>
+
+          <div>주소</div>
 
           <DrawerBody>
             <p>Some contents...</p>
