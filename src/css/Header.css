@@ -23,8 +23,31 @@
 
 .sd_myprofile {
   border: 1px solid red;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.test01 {
-  background-color: blue;
+.sd_myprofile > * {
+  border: 1px solid blueviolet;
+}
+
+.sd_myprofile > * > * {
+  border: 1px solid hotpink;
+}
+
+.sd_pf_atr {
+  margin: 0 1rem 0 1rem;
+}
+
+.sd_pf_mybtn {
+  margin-top: 0.5rem;
+}
+
+.sd_pf_info {
+  flex-grow: 1;
+}
+
+.sd_pf_exinfo {
 }
