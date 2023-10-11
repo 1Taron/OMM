@@ -13,6 +13,10 @@ main {
   background-color: var(--gray1);
 }
 
+body {
+  background-color: var(--gray1);
+}
+
 :root {
   --hdgreen: #d6e7cb;
   --gray1: #f5f5f5;
@@ -34,4 +38,15 @@ main {
   justify-content: space-evenly;
   align-items: center;
   margin: auto;
+}
+
+.mw_ex > div {
+  display: block;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  background-color: var(--gray2);
+  border: 1px solid #ebeaec;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 1.2rem;
 }
