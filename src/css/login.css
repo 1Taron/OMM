@@ -1,67 +1,94 @@
 .login {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 15%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 15%);
 }
 
 .login_container {
-    width: 550px;
-    height: 750px;
-    border-radius: 25px;
-    border: solid black 1px;
-    text-align: center;
+  width: 550px;
+  height: 750px;
+  border-radius: 25px;
+  border: solid black 1px;
+  text-align: center;
 }
 
 .mainImage_1 {
-    margin: auto;
-    margin-top: 80px;
-    margin-bottom: 90px;
-    width: 287px;
-    height: 175px;
-
+  margin: auto;
+  margin-top: 80px;
+  margin-bottom: 90px;
+  width: 287px;
+  height: 175px;
+}
+.login_box {
+  width: 400px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.login_container .login_box > * {
+  display: flex;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  background-color: white;
 }
 
-.login_container input {
-    display: block;
-    margin: auto;
-    border-bottom: solid black 1px;
-    margin-bottom: 50px;
-    width: 400px;
-    height: 40px;
+.login_container .login_box > *:before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 25px;
+  height: 1px;
+  width: 100%;
+  border-bottom: 1px solid var(--dark);
+}
+
+.login_container .login_box > * > input {
+  display: block;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  width: 90%;
+  height: 40px;
+  float: right;
+}
+.login_container .login_box > * > i {
+  width: 10%;
+  font-size: 1.2rem;
+  margin: auto;
+  color: var(--gray4);
 }
 
 .login_container input:nth-child(3) {
-    margin-bottom: 80px;
+  margin-bottom: 80px;
 }
 
-
 .login_container button {
-    width: 400px;
-    height: 50px;
-    display: block;
-    margin: auto;
-    border-radius: 15px;
-    color: white;
-    margin-bottom: 20px;
+  width: 400px;
+  height: 50px;
+  display: block;
+  margin: auto;
+  border-radius: 15px;
+  color: white;
+  margin-bottom: 20px;
 }
 
 .login_btn {
-    background-color: #FFCE50;
-    font-size: 18px;
+  background-color: #ffce50;
+  font-size: 18px;
 }
 
 .register_btn {
-    background-color: #FF50C3;
-    font-size: 18px;
+  background-color: #ff50c3;
+  font-size: 18px;
 }
 
 .login_btn:hover {
-    background-color: #e4b130f5;
-    transition: background 0.2s ease-in-out;
+  background-color: #e4b130f5;
+  transition: background 0.2s ease-in-out;
 }
 
 .register_btn:hover {
-    background-color: #d341a0;
-    transition: background 0.2s ease-in-out;
+  background-color: #d341a0;
+  transition: background 0.2s ease-in-out;
 }
