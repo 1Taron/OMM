@@ -4,7 +4,6 @@ import "../css/Header.css";
 import "../css/login.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 
 export default function Login() {
   const { username, setUserName } = useState("");

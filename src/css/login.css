@@ -16,7 +16,7 @@
 .mainImage_1 {
   margin: auto;
   margin-top: 80px;
-  margin-bottom: 90px;
+  margin-bottom: 80px;
   width: 287px;
   height: 175px;
 }
@@ -59,8 +59,11 @@
   color: var(--gray4);
 }
 
-.login_container input:nth-child(3) {
+/* .login_container input:nth-child(3) {
   margin-bottom: 80px;
+} */
+.login_box {
+  margin-bottom: 60px;
 }
 
 .login_container button {
