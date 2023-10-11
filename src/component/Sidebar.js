@@ -113,6 +113,11 @@ export default function Sidebar() {
             <Button colorScheme="red" m={"auto"}>
               logout
             </Button>
+            <Link to={"/login"}>
+              <Button colorScheme="blue" m={"auto"}>
+                login
+              </Button>
+            </Link>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
