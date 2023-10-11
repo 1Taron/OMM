@@ -1,0 +1,51 @@
+.yaggwan {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 15%);
+}
+
+.yaggwan_container {
+    width: 550px;
+    height: 750px;
+    border-radius: 25px;
+    border: solid black 1px;
+    text-align: center;
+}
+
+.mainImage_2 {
+    margin: auto;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    width: 287px;
+    height: 175px;
+}
+
+
+.chakra-accordion {
+    width: 400px;
+    margin: auto;
+}
+
+.check_info {
+    margin-right: 20px;
+}
+
+.register_done_btn {
+    position: absolute;
+    left: 14%;
+    top: 50%;
+    transform: translateY(550%);
+    width: 400px;
+    height: 50px;
+    display: block;
+    background-color: #FF50C3;
+    border-radius: 15px;
+    font-weight: 18px;
+    color: white;
+}
+
+.register_done_btn:hover {
+    background-color: #bd3b8f;
+    transition: background 0.2s ease-in-out;
+}

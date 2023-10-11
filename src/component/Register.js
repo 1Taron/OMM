@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Header from "./Header";
 import "../css/Header.css";
 import "../css/Register.css"
@@ -37,7 +37,10 @@ export default function Register() {
                         placeholder="이메일(필수 X)"
                         value=""
                     ></input>
-                    <button className="next_btn">다음</button>
+                    <Link to="/yaggwan">
+                        <button className="next_btn">다음</button>
+                    </Link>
+
                 </div>
             </form>
         </main >

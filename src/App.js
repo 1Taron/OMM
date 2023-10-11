@@ -5,6 +5,7 @@ import Layout from "./component/Layout";
 import IndexPage from "./pages/IndexPage";
 import Login from "./component/Login";
 import Register from "./component/Register";
+import Yaggwan from "./component/Yaggwan";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       </Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/register" element={<Register />}></Route>
+      <Route path="/yaggwan" element={<Yaggwan />}></Route>
     </Routes>
   );
 }

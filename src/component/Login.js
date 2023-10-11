@@ -30,7 +30,6 @@ export default function Login() {
                     <Link to="/register">
                         <button className="register_btn">회원가입</button>
                     </Link>
-
                 </div>
             </form>
         </main>
