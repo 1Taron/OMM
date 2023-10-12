@@ -1,17 +1,4 @@
-.payMain_container > * {
-  border: 1px solid red;
-}
-.payMain_container > * > * {
-  border: 1px solid blue;
-}
-.payMain_container > * > * > * {
-  border: 1px solid yellow;
-  background-color: antiquewhite;
-}
-.payMain_container > * > * > * > * {
-  border: 1px solid darkcyan;
-  background-color: lightcyan;
-}
+
 
 .payMain_container {
   background-color: white;
@@ -19,6 +6,7 @@
   min-height: 980px;
   height: auto;
   margin: auto;
+  padding-top: 1rem;
 }
 
 .payMain_container .pay_order_container {
@@ -26,6 +14,7 @@
   width: 100%;
   height: 220px;
   display: flex;
+  
 }
 
 .pay_order_box01 {
@@ -54,4 +43,70 @@
   flex-grow: 1;
   margin: 10px 10px 10px 10px;
   text-align: center;
+}
+
+/* 나머지 영역 */
+.pay_remain_container {
+  background-color: thistle;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.pay_remain_container .pay_delivery_box {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.pay_remain_container .pay_privacy_box{
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+.pay_subtitle {
+  font-size: 1.8rem;
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+.pay_remain_container .pay_delivery_box .pay_delivery_adress{
+  font-size: 1.2rem;
+  text-align: left;
+  padding-left: 10px;
+  margin-bottom: 40px;
+}
+
+.pay_remain_container .pay_delivery_box .pay_delivery_request > p {
+  font-size: 1.2rem;
+  text-align: left;
+  padding-left: 10px;
+}
+.pay_remain_container .pay_delivery_box .pay_delivery_request > input {
+  width: 98%;
+  height: 50px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1.4rem;
+}
+
+
+.pay_remain_container > * {
+  /* border: 1px solid red; */
+  background-color: azure;
+}
+.pay_remain_container > * > * {
+  /* border: 1px solid blue; */
+  background-color: cornsilk;
+}
+.pay_remain_container > * > * > * {
+  /* border: 1px solid yellow; */
+  background-color: lemonchiffon;
+}
+.pay_remain_container > * > * > * > * {
+  border: 1px solid darkcyan;
+  background-color: thistle;
 }

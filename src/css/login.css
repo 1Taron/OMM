@@ -3,6 +3,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, 15%);
+  background-color: white;
+  border-radius: 25px;
 }
 
 .login_container {
