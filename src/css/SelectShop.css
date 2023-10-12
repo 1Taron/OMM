@@ -1,0 +1,22 @@
+.SelectShop {
+    width: var(--mw);
+    background-color: white;
+    height: auto;
+    min-height: 1080px;
+    margin: auto;
+
+}
+
+.space {
+    margin: auto;
+    height: 30px;
+    background-color: white;
+}
+
+.locate_container {
+    margin: auto;
+    border: solid 1px black;
+    width: 940px;
+    height: 430px;
+    margin-top: 30px;
+}

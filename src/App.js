@@ -7,6 +7,7 @@ import Login from "./component/Login";
 import Register from "./component/Register";
 import Yaggwan from "./component/Yaggwan";
 import PaymentPage from "./pages/PaymentPage";
+import SelectShopPage from "./pages/SelectShopPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/register" element={<Register />}></Route>
       <Route path="/yaggwan" element={<Yaggwan />}></Route>
       <Route path="/payment" element={<PaymentPage />}></Route>
+      <Route path="/select" element={<SelectShopPage />}></Route>
     </Routes>
   );
 }
