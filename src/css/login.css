@@ -11,6 +11,7 @@
   border-radius: 25px;
   border: solid black 1px;
   text-align: center;
+  background-color: white;
 }
 
 .mainImage_1 {
@@ -20,13 +21,15 @@
   width: 287px;
   height: 175px;
 }
+
 .login_box {
   width: 400px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
 }
-.login_container .login_box > * {
+
+.login_container .login_box>* {
   display: flex;
   width: 100%;
   position: relative;
@@ -34,7 +37,7 @@
   background-color: white;
 }
 
-.login_container .login_box > *:before {
+.login_container .login_box>*:before {
   content: "";
   position: absolute;
   left: 0px;
@@ -44,7 +47,7 @@
   border-bottom: 1px solid var(--dark);
 }
 
-.login_container .login_box > * > input {
+.login_container .login_box>*>input {
   display: block;
   margin-bottom: 25px;
   margin-top: 25px;
@@ -52,7 +55,8 @@
   height: 40px;
   float: right;
 }
-.login_container .login_box > * > i {
+
+.login_container .login_box>*>i {
   width: 10%;
   font-size: 1.2rem;
   margin: auto;

@@ -2,8 +2,17 @@ import { Link, Outlet } from "react-router-dom";
 import Header from "./Header";
 import "../css/Header.css";
 import "../css/Register.css";
+import { useState } from "react";
 
 export default function Register() {
+
+  const { resusername, ressetUserName } = useState("");
+  const { respassword, ressetpassword } = useState("");
+  const { name, setname } = useState("");
+  const { tel, settel } = useState("");
+  const { email, setemail } = useState("");
+
+
   return (
     <main className="layout_Mw">
       <Header />
@@ -14,26 +23,42 @@ export default function Register() {
           <div className="regi_inputcontainer">
             <div className="regi_idbox">
               <i class="fa-solid fa-user"></i>
-              <input type={"text"} placeholder="아이디" value=""></input>
+              <input
+                type={"text"}
+                placeholder="아이디"
+                value={resusername}>
+              </input>
             </div>
             <div className="regi_pwbox">
               <i class="fa-solid fa-lock"></i>
-              <input type={"text"} placeholder="비밀번호" value=""></input>
+              <input
+                type={"text"}
+                placeholder="비밀번호"
+                value={respassword}>
+              </input>
             </div>
             <div className="regi_namebox">
               <i class="fa-solid fa-user"></i>
-              <input type={"text"} placeholder="이름" value=""></input>
+              <input
+                type={"text"}
+                placeholder="이름"
+                value={name}>
+              </input>
             </div>
             <div className="regi_telbox">
               <i class="fa-solid fa-mobile"></i>
-              <input type={"text"} placeholder="전화번호" value=""></input>
+              <input
+                type={"text"}
+                placeholder="전화번호"
+                value={tel}>
+              </input>
             </div>
             <div className="regi_emailbox">
               <i class="fa-solid fa-envelope"></i>
               <input
                 type={"text"}
                 placeholder="이메일(필수 X)"
-                value=""
+                value={email}
               ></input>
             </div>
           </div>

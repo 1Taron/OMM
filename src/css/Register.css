@@ -11,6 +11,7 @@
   border-radius: 25px;
   border: solid black 1px;
   text-align: center;
+  background-color: white;
 }
 
 .mainImage {
@@ -25,9 +26,10 @@
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+
 }
 
-.regi_inputcontainer > * {
+.regi_inputcontainer>* {
   display: flex;
   width: 400px;
   margin: auto;
@@ -35,7 +37,8 @@
   z-index: 1;
   background-color: white;
 }
-.regi_inputcontainer > *:before {
+
+.regi_inputcontainer>*:before {
   content: "";
   position: absolute;
   left: 0px;
@@ -45,7 +48,7 @@
   border-bottom: 1px solid var(--dark);
 }
 
-.regi_inputcontainer > * > i {
+.regi_inputcontainer>*>i {
   width: 10%;
   font-size: 1.2rem;
   margin: auto;
