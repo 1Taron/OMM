@@ -27,6 +27,7 @@
 .pay_tabsubtitle {
   font-size: 0.8rem;
 }
+
 /* 결제 주소영역 */
 .payMain_container .pay_adress_container {
   width: 100%;
@@ -39,7 +40,21 @@
   flex-grow: 2;
 }
 .payMain_container .pay_adress_container .pay_adress_left {
-  width: 50px;
+  width: 70px;
+  opacity: 0;
+}
+.pay_modal_title {
+  font-size: 1.7rem;
+  text-align: center;
+}
+.blankSpace {
+  width: 100%;
+  min-height: 100px;
+  color: initial;
+}
+
+.pay_adress_right2 {
+  width: 70px;
   opacity: 0;
 }
 
@@ -74,7 +89,7 @@
 /* 결제 요청사항 영역 */
 .payMain_container .pay_request_container {
   width: 100%;
-  min-height: 270px;
+  min-height: 200px;
   height: auto;
   border: 1px solid var(--gray2);
   border-radius: 10px;
