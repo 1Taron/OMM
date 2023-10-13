@@ -1,7 +1,7 @@
 # 참고하셈 보성
+
 https://chakra-ui.com/docs/styled-system/style-props
-
-
+차크라 색 종류 https://chakra-ui.com/docs/styled-system/theme
 
 # Getting Started with Create React App
 
