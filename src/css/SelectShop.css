@@ -15,8 +15,40 @@
 
 .locate_container {
     margin: auto;
-    border: solid 1px black;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
     width: 940px;
     height: 430px;
     margin-top: 30px;
+}
+
+.locate_shop_container {
+    width: 470px;
+    height: 430px;
+    float: left;
+    border-right: solid 1px black;
+}
+
+.locate_shop_container2 {
+    width: 470px;
+    height: 430px;
+    float: right;
+    border-left: solid 1px black;
+}
+
+.locate_url {
+    text-align: center;
+    font-size: 28px;
+    border-bottom: solid 1px black;
+    margin: 5px;
+}
+
+.shop_locate {
+    margin: 5px;
+    font-size: 24px;
+    border-bottom: solid 1px black;
+}
+
+.shop_distence {
+    float: right;
 }
