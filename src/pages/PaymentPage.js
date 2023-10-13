@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../component/Header";
+import MenuCard from "../component/MenuCard";
 import "../css/Payment.css";
 import {
   Tabs,
@@ -12,27 +13,42 @@ import {
   InputGroup,
   InputLeftElement,
   Input,
-} from "@chakra-ui/react";
-import { Box } from "@chakra-ui/react";
-import { Button } from "@chakra-ui/react";
-import { Checkbox } from "@chakra-ui/react";
-import { Select } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-import { Radio, RadioGroup } from "@chakra-ui/react";
-import {
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Box,
+  Button,
+  Checkbox,
+  Select,
+  Radio,
+  RadioGroup,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+
 import { Search2Icon } from "@chakra-ui/icons";
 
 export default function PaymentPage() {
   const [paymentValue, setPaymentValue] = React.useState("1");
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [goodPrice] = React.useState(10000);
+  const [extraPrice] = React.useState(1000);
+  const [deliveryPrice] = React.useState(3000);
+
+  const [customInput, setCustomInput] = useState("");
+  const maxLength = 50;
+
+  const handleCustomInputChange = (e) => {
+    const inputText = e.target.value;
+
+    // 글자 수가 최대 길이를 초과하지 않도록 제한
+    if (inputText.length <= maxLength) {
+      setCustomInput(inputText);
+    }
+  };
   return (
     <>
       <Header />
@@ -53,6 +69,7 @@ export default function PaymentPage() {
               </Tab>
             </TabList>
             <TabPanels>
+              {/* 배달 */}
               <TabPanel>
                 {/* 배달 */}
                 {/* 주소 */}
@@ -81,7 +98,10 @@ export default function PaymentPage() {
 
                 {/* 장바구니 */}
                 <div className="pay_menu_container">
-                  <div className="pay_menu_box">메뉴</div>
+                  <div className="pay_menu_box">
+                    <MenuCard />
+                    <MenuCard />
+                  </div>
                   <div className="pay_menu_add">
                     <Link to={"/"}>메뉴 추가하기</Link>
                   </div>
@@ -93,7 +113,7 @@ export default function PaymentPage() {
                   <div className="pay_req_default01 font_02">
                     <Checkbox
                       border={"gray"}
-                      colorScheme="teal"
+                      colorScheme="blue"
                       size="lg"
                       spacing="1rem"
                     >
@@ -103,7 +123,7 @@ export default function PaymentPage() {
                   <div className="pay_req_default02 font_02">
                     <Checkbox
                       border={"gray"}
-                      colorScheme="teal"
+                      colorScheme="blue"
                       size="lg"
                       spacing="1rem"
                     >
@@ -130,8 +150,19 @@ export default function PaymentPage() {
                       <option value="option4">
                         도착 후 전화주시면 직접 받으러 갈게요.
                       </option>
-                      <option value="option5">직접 입력</option>
                     </Select>
+                    <div className="request_directbox">
+                      <p>직접 입력</p>
+                      <textarea
+                        className="request_directinput"
+                        value={customInput}
+                        onChange={handleCustomInputChange}
+                        placeholder="요청사항을 입력해주세요."
+                      />
+                      <p>
+                        {customInput.length}/{maxLength}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -167,15 +198,17 @@ export default function PaymentPage() {
                 <div className="pay_amount_container">
                   <div className="pay_amount_detailbox">
                     <p className="pay_detailkind">상품금액</p>
-                    <p className="pay_detailcash">10,000 원</p>
+                    <p className="pay_detailcash">{goodPrice} 원</p>
                     <p className="pay_detailkind">추가금액</p>
-                    <p className="pay_detailcash">1,000 원</p>
+                    <p className="pay_detailcash">{extraPrice} 원</p>
                     <p className="pay_detailkind">배달요금</p>
-                    <p className="pay_detailcash">3,000 원</p>
+                    <p className="pay_detailcash">{deliveryPrice} 원</p>
                   </div>
                   <div className="pay_amount_totalbox">
                     <p className="pay_total">총 결제금액</p>
-                    <p className="pay_totalcash">14,000 원</p>
+                    <p className="pay_totalcash">
+                      {goodPrice + extraPrice + deliveryPrice} 원
+                    </p>
                   </div>
                 </div>
 
@@ -196,6 +229,7 @@ export default function PaymentPage() {
                   결제하기
                 </Box>
               </TabPanel>
+              {/* 포장 */}
               <TabPanel>
                 {/* 포장 */}
                 {/* 주소 */}
@@ -212,19 +246,23 @@ export default function PaymentPage() {
 
                 {/* 장바구니 */}
                 <div className="pay_menu_container">
-                  <div className="pay_menu_box">메뉴</div>
+                  <div className="pay_menu_box">
+                    <MenuCard />
+                    <MenuCard />
+                    <MenuCard />
+                  </div>
                   <div className="pay_menu_add">
                     <Link to={"/"}>메뉴 추가하기</Link>
                   </div>
                 </div>
 
                 {/* 요청사항 */}
-                <div className="pay_request_container">
+                <div className="pay_request_container_pick">
                   <p className="pay_req_title">요청사항</p>
                   <div className="pay_req_default01 font_02">
                     <Checkbox
                       border={"gray"}
-                      colorScheme="teal"
+                      colorScheme="blue"
                       size="lg"
                       spacing="1rem"
                     >
@@ -232,7 +270,7 @@ export default function PaymentPage() {
                     </Checkbox>
                   </div>
                   <div className="pay_req_choice">
-                    <Select
+                    {/* <Select
                       placeholder="요청사항을 선택해주세요."
                       bg={"initial"}
                       fontSize={"1.2rem"}
@@ -242,7 +280,19 @@ export default function PaymentPage() {
                       border={"none"}
                     >
                       <option value="option1">직접 입력</option>
-                    </Select>
+                    </Select> */}
+                    <div className="request_directbox">
+                      <p>직접 입력</p>
+                      <textarea
+                        className="request_directinput"
+                        value={customInput}
+                        onChange={handleCustomInputChange}
+                        placeholder="요청사항을 입력해주세요."
+                      />
+                      <p>
+                        {customInput.length}/{maxLength}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -270,11 +320,11 @@ export default function PaymentPage() {
                 <div className="pay_amount_container">
                   <div className="pay_amount_detailbox">
                     <p className="pay_detailkind">상품금액</p>
-                    <p className="pay_detailcash">10,000 원</p>
+                    <p className="pay_detailcash">{goodPrice} 원</p>
                   </div>
                   <div className="pay_amount_totalbox">
                     <p className="pay_total">총 결제금액</p>
-                    <p className="pay_totalcash">10,000 원</p>
+                    <p className="pay_totalcash">{goodPrice} 원</p>
                   </div>
                 </div>
 

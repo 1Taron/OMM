@@ -89,20 +89,29 @@
 /* 결제 요청사항 영역 */
 .payMain_container .pay_request_container {
   width: 100%;
-  min-height: 200px;
+  min-height: 360px;
   height: auto;
   border: 1px solid var(--gray2);
   border-radius: 10px;
   margin-bottom: 35px;
 }
 
-.payMain_container .pay_request_container .pay_req_title {
+.pay_request_container_pick {
+  width: 100%;
+  min-height: 240px;
+  height: auto;
+  border: 1px solid var(--gray2);
+  border-radius: 10px;
+  margin-bottom: 35px;
+}
+
+.payMain_container > * .pay_req_title {
   font-size: 1.5rem;
   text-align: left;
   padding: 15px 0 0 15px;
 }
 
-.payMain_container .pay_request_container .pay_req_default01 {
+.payMain_container > * .pay_req_default01 {
   width: 95%;
   height: 60px;
   line-height: 60px;
@@ -112,7 +121,7 @@
   padding-left: 25px;
 }
 
-.payMain_container .pay_request_container .pay_req_default02 {
+.payMain_container > * .pay_req_default02 {
   width: 95%;
   height: 60px;
   line-height: 60px;
@@ -122,12 +131,36 @@
   padding-left: 25px;
 }
 
-.payMain_container .pay_request_container .pay_req_choice {
+.payMain_container > * .pay_req_choice {
   height: 60px;
   width: 95%;
   line-height: 60px;
   margin: auto;
   font-size: 1.2rem;
+}
+
+.request_directbox {
+  display: flex;
+  margin-top: 15px;
+}
+.request_directbox p {
+  color: var(--gray4);
+  margin: 0px 20px 0px 15px;
+  line-height: 30px;
+}
+
+.request_directbox p:nth-child(3) {
+  margin: 0px 0px 0px 10px;
+  line-height: 150px;
+}
+
+.request_directinput {
+  border: 1px solid var(--gray2);
+  font-size: 1.2rem;
+  width: 730px;
+  height: 80px;
+  text-align: center;
+  line-height: 60px;
 }
 
 /* 결제 결제수단 영역 */
@@ -202,8 +235,4 @@
 /* 결제 버튼 */
 .payMain_container button {
   margin: auto;
-}
-
-.payMain_container div {
-  /* border: 1px solid tomato; */
 }

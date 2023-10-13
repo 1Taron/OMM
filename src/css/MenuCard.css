@@ -1,0 +1,48 @@
+.menu_container {
+  width: 100%;
+  height: 280px;
+  border-top: 1px solid var(--gray2);
+  margin: 20px 0 5px 0;
+}
+
+.menu_contentbox {
+  width: 100%;
+}
+
+.menu_ingredient {
+  height: 80%;
+  font-size: 1.3rem;
+}
+.menu_price {
+  height: 20%;
+  font-size: 1.5rem;
+  text-align: left;
+  line-height: 44px;
+  padding-left: 30px;
+}
+
+.menu_addbox {
+  height: 20%;
+  display: flex;
+  float: right;
+  line-height: 50px;
+  padding-right: 10px;
+}
+
+.menu_addbox > * {
+  width: 40px;
+  height: 45px;
+  border-top: 1px solid var(--gray2);
+  border-bottom: 1px solid var(--gray2);
+  margin: auto;
+  font-size: 1.4rem;
+}
+
+.menu_addbox button:nth-child(1) {
+  border-radius: 10px 0 0 10px;
+  border-left: 1px solid var(--gray2);
+}
+.menu_addbox button:nth-child(3) {
+  border-radius: 0 10px 10px 0;
+  border-right: 1px solid var(--gray2);
+}
