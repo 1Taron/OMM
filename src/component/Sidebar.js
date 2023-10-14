@@ -9,13 +9,19 @@ import {
   Button,
   IconButton,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import MyAvatar from "./MyAvatar";
 import NotifyCard from "./NotifyCard";
+import NonAvatar from "./NonAvatar";
 
 export default function Sidebar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+  const [exlogin, setExlogin] = useState(false);
+
+  const exOnOff = () => {
+    setExlogin(!exlogin); // 현재 상태의 반대 값을 설정
+  };
 
   return (
     <>
@@ -38,33 +44,17 @@ export default function Sidebar() {
         <DrawerContent>
           {/* <DrawerCloseButton /> */}
           <div className="sd_myprofile">
-            <div className="sd_pf_atr">
-              <MyAvatar />
-              <Button
-                className="sd_pf_mybtn"
-                width="100px"
-                height="25px"
-                bg="teal.400"
-                _hover={{ bg: "teal.300" }}
-                border="none"
-              >
-                내 정보
-              </Button>
-            </div>
-            <div className="sd_pf_info">
-              <p className="font_01">이름</p>
-              <p className="font_01">등급</p>
-            </div>
+            {exlogin ? <MyAvatar /> : <NonAvatar />}
           </div>
           <div className="sd_pf_exinfo">
             <div className="sd_pf_mypoint">
-              <p className="exinfo_num font_01">0</p>
+              <p className="exinfo_num font_01">{exlogin ? 0 : "-"}</p>
               <Link to={"/point"}>
                 <p className="font_01">포인트</p>
               </Link>
             </div>
             <div className="sd_pf_mycoup">
-              <p className="exinfo_num font_01">0</p>
+              <p className="exinfo_num font_01">{exlogin ? 0 : "-"}</p>
               <Link to={"/coupon"}>
                 <p className="font_01">쿠폰</p>
               </Link>
@@ -73,9 +63,15 @@ export default function Sidebar() {
 
           <div className="sd_adress">
             <div className="sd_adr_title font_01">주소</div>
-            <Link to={"/adress/"} className="sd_adr_content font_01">
-              전라북도 익산시 익산대로 460
-            </Link>
+            {exlogin ? (
+              <Link to={"/adress/"} className="sd_adr_content font_01">
+                전라북도 익산시 익산대로 460
+              </Link>
+            ) : (
+              <div className="sd_adr_content font_01">
+                - - - - - - - - - - - - -
+              </div>
+            )}
           </div>
 
           <div className="sd_remain">
@@ -95,29 +91,30 @@ export default function Sidebar() {
             <div className="sd_notify_container">
               <p className="font_01">알림</p>
               <div className="sd_notify_contentbox">
-                <NotifyCard />
-                <NotifyCard />
-                <NotifyCard />
-                <NotifyCard />
-                <NotifyCard />
-                <NotifyCard />
-                <NotifyCard />
-                <NotifyCard />
-                <NotifyCard />
-                <NotifyCard />
+                {exlogin ? (
+                  <>
+                    <NotifyCard />
+                    <NotifyCard />
+                    <NotifyCard />
+                    <NotifyCard />
+                    <NotifyCard />
+                    <NotifyCard />
+                    <NotifyCard />
+                    <NotifyCard />
+                    <NotifyCard />
+                    <NotifyCard />
+                  </>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
 
           <DrawerFooter>
-            <Button colorScheme="red" m={"auto"}>
+            <Button colorScheme="red" m={"auto"} onClick={exOnOff}>
               logout
             </Button>
-            <Link to={"/login"}>
-              <Button colorScheme="blue" m={"auto"}>
-                login
-              </Button>
-            </Link>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
