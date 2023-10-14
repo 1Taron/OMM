@@ -19,7 +19,7 @@ export default function SelectShopPage() {
           <div className="locate_shop_container">
             <ul>
               <li className="locate_url">OO님이 자주가는 매장</li>
-              <Link to="/">
+              <Link to="/foodselect">
                 <li className="shop_locate">
                   원대점
                   <span className="shop_distence">0.8km</span>
