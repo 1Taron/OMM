@@ -14,7 +14,9 @@ export default function Header() {
       </Link>
 
       {/* 장바구니 아이콘 */}
-      <i class="fa-solid fa-cart-shopping" id="shopcart"></i>
+      <Link to={"/payment"}>
+        <i class="fa-solid fa-cart-shopping" id="shopcart"></i>
+      </Link>
     </header>
   );
 }

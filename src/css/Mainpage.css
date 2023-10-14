@@ -1,0 +1,52 @@
+.main_back {
+  width: 1000px;
+  min-height: 1080px;
+  height: auto;
+  background-color: white;
+  margin: auto;
+  padding-top: 50px;
+}
+
+.main_back .mainp_container {
+  width: 95%;
+  height: 300px;
+  /* background-color: darkgrey; */
+  margin: auto;
+  /* margin-top: 30px; */
+}
+
+.eventbannerSwiper {
+  width: 100%;
+  height: 100%;
+}
+
+.eb_swiper_slide {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mainp_iconbox {
+  width: 100%;
+  height: 300px;
+  /* background-color: beige; */
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.mainp_iconbox > * {
+  width: 150px;
+  height: 150px;
+  border: 1px solid var(--gray2);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.mainp_iconbox > *:hover {
+  box-shadow: inset 0 0 3px;
+}

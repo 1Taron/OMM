@@ -21,13 +21,12 @@ export default function MenuCard() {
           direction={{ base: "column", sm: "row" }}
           overflow="hidden"
           variant="outline"
-          //   borderTop={"1px solid #d8d9da"}
         >
           <Image
             objectFit="cover"
             maxW={{ base: "100%", sm: "300px" }}
             src="img/salad01.jpg"
-            alt="Caffe Latte"
+            alt="Menu1"
             //   paddingTop={"5px"}
             margin={"auto"}
             mt={"10px"}
