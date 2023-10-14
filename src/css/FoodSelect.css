@@ -19,36 +19,67 @@
     margin-bottom: 130px;
 }
 
-
-
 .Tabs {
     width: auto;
-    height: 500px;
+    height: 550px;
     margin-top: 110px;
     border-radius: 30px;
-}
-
-.next3_btn {
-    width: 50px;
-    height: 50px;
-    background-color: black;
 }
 
 .swiper {
     width: 100%;
     height: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px;
 }
 
 .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    background: #ffEFC8;
     height: calc((100% - 30px) / 2) !important;
 
     /* Center slide text vertically */
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.ingrediant_img {
+    width: 130px;
+    height: 130px;
+    margin: auto;
+
+
+}
+
+.ingrediant_name {
+    text-align: center;
+    background-color: #E4E29D;
+    font-size: 12px;
+    height: 30px;
+    width: 130px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.Select_btn {
+    background-color: #ff50c3;
+    font-size: 18px;
+    width: 400px;
+    height: 50px;
+    border-radius: 15px;
+    color: white;
+}
+
+.Select_btn:hover {
+    background-color: #d341a0;
+    transition: background 0.2s ease-in-out;
+}
+
+.btn_container {
+    text-align: center;
+    transform: translateY(-70px);
 }
