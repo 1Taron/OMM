@@ -80,3 +80,13 @@
   text-align: center;
   transform: translateY(-70px);
 }
+
+@keyframes moving_animation {
+  from {}
+
+  to {
+    top: 250px;
+    left: 700px;
+  }
+
+}
