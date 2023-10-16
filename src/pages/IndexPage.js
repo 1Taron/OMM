@@ -40,18 +40,6 @@ export default function IndexPage() {
         <div className="mainp_iconbox">
           <div className="mainp_deliveryicon">
             <Link to={"/select"}>
-              <img alt="배달" src="img/delivery01.png" />
-            </Link>
-          </div>
-          <div className="mainp_pickupicon">
-            <Link to={"/select"}>
-              <img alt="포장" src="img/pickup01.png" />
-            </Link>
-          </div>
-        </div>
-        <div className="mainp_iconbox">
-          <div className="mainp_deliveryicon">
-            <Link to={"/select"}>
               <img alt="배달" src="img/delivery02.png" />
             </Link>
           </div>
