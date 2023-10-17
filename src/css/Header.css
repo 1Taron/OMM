@@ -4,6 +4,7 @@
   justify-content: space-between;
   align-items: center;
   height: 100px;
+  width: 100%;
 }
 
 .hd_title {

@@ -30,7 +30,7 @@ import { Link } from "react-router-dom";
 
 import { Search2Icon } from "@chakra-ui/icons";
 
-export default function PaymentPage() {
+export default function PaymentPage_Pickup() {
   const [paymentValue, setPaymentValue] = React.useState("1");
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -62,44 +62,34 @@ export default function PaymentPage() {
           <Tabs isFitted variant="enclosed" bg={"white"}>
             <TabList mb="1em">
               <Tab fontSize={"1.4rem"}>
-                배달 <p className="pay_tabsubtitle">(예상시간 : 40 ~ 50분)</p>
+                <Link to={"/payment_delivery"}>
+                  배달 <p className="pay_tabsubtitle">(예상시간 : 40 ~ 50분)</p>
+                </Link>
               </Tab>
               <Tab fontSize={"1.4rem"}>
-                <Link to={"/payment_pickup"}>
-                  포장 <p className="pay_tabsubtitle"> (픽업시간 : 10분)</p>
-                </Link>
+                포장 <p className="pay_tabsubtitle"> (픽업시간 : 10분)</p>
               </Tab>
             </TabList>
             <TabPanels>
-              {/* 배달 */}
+              <TabPanel></TabPanel>
+              {/* 포장 */}
               <TabPanel>
                 {/* 주소 */}
                 <div className="pay_adress_container">
                   <div className="pay_adress_left">--</div>
                   <div className="pay_adress_center">
-                    <p>전라북도 익산시 익산대로 460(으)로 배달</p>
+                    <p>익산점 픽업</p>
                     <p className="pay_tabsubtitle font_02">
-                      ------ 자세한 주소 ------
+                      전라북도 익산시 익산대로 460
                     </p>
                   </div>
-                  <div className="pay_adress_right">
-                    <Button
-                      onClick={onOpen}
-                      colorScheme="black"
-                      variant="outline"
-                      fontSize={"1rem"}
-                      color={"gray"}
-                      height={"25px"}
-                      width={"70px"}
-                    >
-                      <p className="font_02">변경</p>
-                    </Button>
-                  </div>
+                  <div className="pay_adress_right2">--</div>
                 </div>
 
                 {/* 장바구니 */}
                 <div className="pay_menu_container">
                   <div className="pay_menu_box">
+                    <MenuCard />
                     <MenuCard />
                     <MenuCard />
                   </div>
@@ -109,19 +99,9 @@ export default function PaymentPage() {
                 </div>
 
                 {/* 요청사항 */}
-                <div className="pay_request_container">
+                <div className="pay_request_container_pick">
                   <p className="pay_req_title">요청사항</p>
                   <div className="pay_req_default01 font_02">
-                    <Checkbox
-                      border={"gray"}
-                      colorScheme="blue"
-                      size="lg"
-                      spacing="1rem"
-                    >
-                      문 앞에 놓고, 문자주세요.
-                    </Checkbox>
-                  </div>
-                  <div className="pay_req_default02 font_02">
                     <Checkbox
                       border={"gray"}
                       colorScheme="blue"
@@ -132,7 +112,7 @@ export default function PaymentPage() {
                     </Checkbox>
                   </div>
                   <div className="pay_req_choice">
-                    <Select
+                    {/* <Select
                       placeholder="요청사항을 선택해주세요."
                       bg={"initial"}
                       fontSize={"1.2rem"}
@@ -141,17 +121,8 @@ export default function PaymentPage() {
                       mt={"15px"}
                       border={"none"}
                     >
-                      <option value="option1">
-                        서두르지 않고 안전하게 와주세요.
-                      </option>
-                      <option value="option2">그냥 문 앞에 놓아 주세요.</option>
-                      <option value="option3">
-                        벨 누르기 전에 전화 주세요.
-                      </option>
-                      <option value="option4">
-                        도착 후 전화주시면 직접 받으러 갈게요.
-                      </option>
-                    </Select>
+                      <option value="option1">직접 입력</option>
+                    </Select> */}
                     <div className="request_directbox">
                       <p>직접 입력</p>
                       <textarea
@@ -176,19 +147,11 @@ export default function PaymentPage() {
                         <Radio
                           value="1"
                           size={"lg"}
-                          mr={"12rem"}
+                          m={"auto"}
                           spacing={"3"}
                           border={"1px solid #d8d9da"}
                         >
                           <p className="pay_radio01 font_02">신용 카드</p>
-                        </Radio>
-                        <Radio
-                          value="2"
-                          size="lg"
-                          spacing={"3"}
-                          border={"1px solid #d8d9da"}
-                        >
-                          <p className="pay_radio01 font_02">현장 결재</p>
                         </Radio>
                       </Stack>
                     </RadioGroup>
@@ -200,16 +163,10 @@ export default function PaymentPage() {
                   <div className="pay_amount_detailbox">
                     <p className="pay_detailkind">상품금액</p>
                     <p className="pay_detailcash">{goodPrice} 원</p>
-                    <p className="pay_detailkind">추가금액</p>
-                    <p className="pay_detailcash">{extraPrice} 원</p>
-                    <p className="pay_detailkind">배달요금</p>
-                    <p className="pay_detailcash">{deliveryPrice} 원</p>
                   </div>
                   <div className="pay_amount_totalbox">
                     <p className="pay_total">총 결제금액</p>
-                    <p className="pay_totalcash">
-                      {goodPrice + extraPrice + deliveryPrice} 원
-                    </p>
+                    <p className="pay_totalcash">{goodPrice} 원</p>
                   </div>
                 </div>
 
@@ -230,8 +187,6 @@ export default function PaymentPage() {
                   결제하기
                 </Box>
               </TabPanel>
-              {/* 포장 */}
-              <TabPanel></TabPanel>
             </TabPanels>
           </Tabs>
         </div>

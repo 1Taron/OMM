@@ -1,6 +1,7 @@
 import { Avatar, Button, Wrap, WrapItem } from "@chakra-ui/react";
 
-export default function MyAvatar() {
+export default function MyAvatar({ username }) {
+  console.log("아바타 이름 : " + { username });
   return (
     <>
       <div className="sd_pf_atr">
@@ -25,7 +26,7 @@ export default function MyAvatar() {
         </Button>
       </div>
       <div className="sd_pf_info">
-        <p className="font_01">이름</p>
+        <p className="font_01">{username}</p>
         <p className="font_01">등급</p>
       </div>
     </>

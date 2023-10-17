@@ -36,7 +36,6 @@ export default function IndexPage() {
             <img alt="이벤트배너03" src="img/eventbanner03_950px.png" />
           </SwiperSlide>
         </Swiper>
-
         <div className="mainp_iconbox">
           <div className="mainp_deliveryicon">
             <Link to={"/select"}>

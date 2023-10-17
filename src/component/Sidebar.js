@@ -9,19 +9,36 @@ import {
   Button,
   IconButton,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MyAvatar from "./MyAvatar";
 import NotifyCard from "./NotifyCard";
 import NonAvatar from "./NonAvatar";
+import { UserContext } from "../UserContext";
 
 export default function Sidebar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-  const [exlogin, setExlogin] = useState(false);
+  const { setUserInfo, userInfo } = useContext(UserContext);
 
-  const exOnOff = () => {
-    setExlogin(!exlogin); // 현재 상태의 반대 값을 설정
-  };
+  useEffect(() => {
+    fetch("http://localhost:4000/profile", {
+      credentials: "include",
+    }).then((res) => {
+      res.json().then((userInfo) => {
+        setUserInfo(userInfo);
+      });
+    });
+  }, []);
+
+  function logout() {
+    fetch("http://localhost:4000/logout", {
+      credentials: "include",
+      method: "POST",
+    });
+    setUserInfo(null);
+  }
+
+  const username = userInfo?.username;
 
   return (
     <>
@@ -44,17 +61,17 @@ export default function Sidebar() {
         <DrawerContent>
           {/* <DrawerCloseButton /> */}
           <div className="sd_myprofile">
-            {exlogin ? <MyAvatar /> : <NonAvatar />}
+            <>{username ? <MyAvatar username={username} /> : <NonAvatar />}</>
           </div>
           <div className="sd_pf_exinfo">
             <div className="sd_pf_mypoint">
-              <p className="exinfo_num font_01">{exlogin ? 0 : "-"}</p>
+              <p className="exinfo_num font_01">{username ? 0 : "-"}</p>
               <Link to={"/point"}>
                 <p className="font_01">포인트</p>
               </Link>
             </div>
             <div className="sd_pf_mycoup">
-              <p className="exinfo_num font_01">{exlogin ? 0 : "-"}</p>
+              <p className="exinfo_num font_01">{username ? 0 : "-"}</p>
               <Link to={"/coupon"}>
                 <p className="font_01">쿠폰</p>
               </Link>
@@ -63,7 +80,7 @@ export default function Sidebar() {
 
           <div className="sd_adress">
             <div className="sd_adr_title font_01">주소</div>
-            {exlogin ? (
+            {username ? (
               <Link to={"/adress/"} className="sd_adr_content font_01">
                 전라북도 익산시 익산대로 460
               </Link>
@@ -91,7 +108,7 @@ export default function Sidebar() {
             <div className="sd_notify_container">
               <p className="font_01">알림</p>
               <div className="sd_notify_contentbox">
-                {exlogin ? (
+                {username ? (
                   <>
                     <NotifyCard />
                     <NotifyCard />
@@ -112,7 +129,7 @@ export default function Sidebar() {
           </div>
 
           <DrawerFooter>
-            <Button colorScheme="red" m={"auto"} onClick={exOnOff}>
+            <Button colorScheme="red" m={"auto"} onClick={logout}>
               logout
             </Button>
           </DrawerFooter>
