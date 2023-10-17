@@ -8,6 +8,12 @@
   text-align: center;
 }
 
+.__payMain_container {
+  width: 950px;
+  height: auto;
+  margin: auto;
+}
+
 .payMain_container .pay_branch_container {
   width: 1000px;
   height: 100px;
@@ -20,8 +26,36 @@
 }
 
 .payMain_container .pay_choice_container {
-  width: 1000px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid black;
+  margin-bottom: 15px;
+}
+
+.__pay_pickup_btn01 {
+  width: 50%;
   height: 60px;
+}
+
+.__pay_pickup_btn02 {
+  width: 50%;
+  height: 60px;
+  border: 1px solid dodgerblue;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 0px solid black;
+}
+
+.__pay_delivery_btn02 {
+  width: 50%;
+  height: 60px;
+}
+
+.__pay_delivery_btn01 {
+  width: 50%;
+  height: 60px;
+  border: 1px solid dodgerblue;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 0px solid black;
 }
 
 .pay_tabsubtitle {
@@ -233,6 +267,17 @@
 }
 
 /* 결제 버튼 */
-.payMain_container button {
+._payment_paybtn {
   margin: auto;
+  width: 300px;
+  height: 50px;
+  font-size: 1.2rem;
+  padding: 3px;
+  color: white;
+  border-radius: 10px;
+  background-color: #3182ce;
+}
+
+._payment_paybtn:hover {
+  background-color: #3278b9;
 }
