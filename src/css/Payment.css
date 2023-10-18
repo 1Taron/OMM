@@ -123,7 +123,7 @@
 /* 결제 요청사항 영역 */
 .payMain_container .pay_request_container {
   width: 100%;
-  min-height: 360px;
+  min-height: 350px;
   height: auto;
   border: 1px solid var(--gray2);
   border-radius: 10px;
@@ -175,7 +175,9 @@
 
 .request_directbox {
   display: flex;
-  margin-top: 15px;
+  margin-top: 5px;
+  margin-left: 25px;
+  height: 90px;
 }
 .request_directbox p {
   color: var(--gray4);
@@ -195,6 +197,22 @@
   height: 80px;
   text-align: center;
   line-height: 60px;
+}
+
+._payment_reqbtn {
+  float: right;
+  margin-right: 20px;
+  margin-top: 5px;
+  width: 120px;
+  height: 40px;
+  font-size: 0.9rem;
+  padding: 3px;
+  color: white;
+  border-radius: 10px;
+  background-color: #acacac;
+}
+._payment_reqbtn:hover {
+  background-color: #919191;
 }
 
 /* 결제 결제수단 영역 */

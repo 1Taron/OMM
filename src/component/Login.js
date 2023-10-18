@@ -4,7 +4,7 @@ import "../css/Header.css";
 import "../css/login.css";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../contexts/UserContext";
 
 export default function Login() {
   const [username, setUserName] = useState("");

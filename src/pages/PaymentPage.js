@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Header from "../component/Header";
 import MenuCard from "../component/MenuCard";
 import "../css/Payment.css";
@@ -26,7 +26,7 @@ import {
   Radio,
   RadioGroup,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import { Search2Icon } from "@chakra-ui/icons";
 
@@ -34,100 +34,141 @@ export default function PaymentPage() {
   const [paymentValue, setPaymentValue] = React.useState("1");
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [goodPrice] = React.useState(10000);
   const [extraPrice] = React.useState(1000);
   const [deliveryPrice] = React.useState(3000);
 
-  const [customInput, setCustomInput] = useState("");
   const maxLength = 50;
 
-  const handleCustomInputChange = (e) => {
+  const handlePd_textareaValueChange = (e) => {
     const inputText = e.target.value;
 
     // 글자 수가 최대 길이를 초과하지 않도록 제한
     if (inputText.length <= maxLength) {
-      setCustomInput(inputText);
+      setpd_TextareaValue(inputText);
     }
+  };
+
+  // const [pd_quantity, setPd_quantity] = useState("");
+  // const [pd_price, setPd_price] = useState("");
+  const [pd_adress, setPd_adress] = useState("전라북도 익산시 익산대로 460");
+  // const [pd_context, setPd_context] = useState("");
+  const [pd_cover, setPd_cover] = useState("");
+  // const [contextCheck01, setContextCheck01] = useState("");
+
+  const [pd_checkboxValue1, setpd_CheckboxValue1] = useState(false);
+  const [pd_checkboxValue2, setpd_CheckboxValue2] = useState(false);
+  const [pd_selectedValue, setpd_SelectedValue] = useState("");
+  const [pd_textareaValue, setpd_TextareaValue] = useState("");
+
+  const [redirect, setRedirect] = useState(false);
+
+  const [totalProductCount, setTotalProductCount] = useState(1);
+  const [totalAmount, setTotalAmount] = useState(10000);
+
+  const handleProductCountChange = (productCount, totalAmount) => {
+    setTotalProductCount(productCount);
+    setTotalAmount(productCount * totalAmount);
   };
 
   async function delivery_pay(e) {
     e.preventDefault();
 
-    // const response = await fetch("http://localhost:4000/payment_delivery", {
-    //   method: "POST",
-    //   body: JSON.stringify({ username, password }),
-    //   headers: { "Content-Type": "application/json" },
-    //   credentials: "include",
-    // });
+    //requset push
+    const requsetToSave = [];
 
-    // if (response.ok) {
-    //   response.json().then((userInfo) => {
-    //     setUserInfo(userInfo);
-    //     setRedirect(true);
-    //   });
-    // } else {
-    //   alert("로그인 실패");
-    // }
+    if (pd_checkboxValue1) {
+      requsetToSave.push("문 앞에 놓고, 문자주세요.");
+    }
+    if (pd_checkboxValue2) {
+      requsetToSave.push("일회용 수저, 포크가 필요해요.");
+    }
+    if (pd_selectedValue) {
+      requsetToSave.push(pd_selectedValue);
+    }
+    if (pd_textareaValue) {
+      requsetToSave.push(pd_textareaValue);
+    }
+
+    const pd_price = totalAmount + extraPrice + deliveryPrice;
+    const pd_quantity = totalProductCount;
+    const pd_context = requsetToSave.join("_");
+    const response = await fetch("http://localhost:4000/payment_delivery", {
+      method: "POST",
+      body: JSON.stringify({
+        pd_quantity,
+        pd_price,
+        pd_adress,
+        pd_context,
+      }),
+      headers: { "Content-Type": "application/json" },
+      // credentials: "include",
+    });
+
+    if (response.status === 200) {
+      setRedirect(true);
+    } else {
+      alert("실패");
+    }
   }
+
+  if (redirect) return <Navigate to={"/"} />;
 
   return (
     <>
       <Header />
       <div className="payMain_container font_01">
-        <div className="pay_branch_container font_03">
-          <p>익산점</p>
-        </div>
+        <form onSubmit={delivery_pay}>
+          <div className="pay_branch_container font_03">
+            <p>익산점</p>
+          </div>
 
-        <div className="__payMain_container">
-          <div className="pay_choice_container">
-            <button className="__pay_delivery_btn01">
-              배달
-              <p className="pay_tabsubtitle">(예상시간 : 40 ~ 50분)</p>
-            </button>
-            <Link to={"/payment_pickup"}>
-              <button className="__pay_delivery_btn02">
-                포장
-                <p className="pay_tabsubtitle">(픽업시간 : 10분)</p>
+          <div className="__payMain_container">
+            <div className="pay_choice_container">
+              <button className="__pay_delivery_btn01">
+                배달
+                <p className="pay_tabsubtitle">(예상시간 : 40 ~ 50분)</p>
               </button>
-            </Link>
-          </div>
-          {/* 주소 */}
-          <div className="pay_adress_container">
-            <div className="pay_adress_left">--</div>
-            <div className="pay_adress_center">
-              <p>전라북도 익산시 익산대로 460(으)로 배달</p>
-              <p className="pay_tabsubtitle font_02">
-                ------ 자세한 주소 ------
-              </p>
+              <Link to={"/payment_pickup"}>
+                <button className="__pay_delivery_btn02">
+                  포장
+                  <p className="pay_tabsubtitle">(픽업시간 : 10분)</p>
+                </button>
+              </Link>
             </div>
-            <div className="pay_adress_right">
-              <Button
-                onClick={onOpen}
-                colorScheme="black"
-                variant="outline"
-                fontSize={"1rem"}
-                color={"gray"}
-                height={"25px"}
-                width={"70px"}
-              >
-                <p className="font_02">변경</p>
-              </Button>
+            {/* 주소 */}
+            <div className="pay_adress_container">
+              <div className="pay_adress_left">--</div>
+              <div className="pay_adress_center">
+                <p>전라북도 익산시 익산대로 460(으)로 배달</p>
+                <p className="pay_tabsubtitle font_02">{pd_adress}</p>
+              </div>
+              <div className="pay_adress_right">
+                <Button
+                  onClick={onOpen}
+                  colorScheme="black"
+                  variant="outline"
+                  fontSize={"1rem"}
+                  color={"gray"}
+                  height={"25px"}
+                  width={"70px"}
+                >
+                  <p className="font_02">변경</p>
+                </Button>
+              </div>
             </div>
-          </div>
 
-          {/* 장바구니 */}
-          <div className="pay_menu_container">
-            <div className="pay_menu_box">
-              <MenuCard />
-              <MenuCard />
+            {/* 장바구니 */}
+            <div className="pay_menu_container">
+              <div className="pay_menu_box">
+                {/* <MenuCard pd_quantity={pd_quantity} /> */}
+                <MenuCard onProductCountChange={handleProductCountChange} />
+              </div>
+              <div className="pay_menu_add">
+                <Link to={"/"}>메뉴 추가하기</Link>
+              </div>
             </div>
-            <div className="pay_menu_add">
-              <Link to={"/"}>메뉴 추가하기</Link>
-            </div>
-          </div>
 
-          {/* 요청사항 */}
-          <form onSubmit={delivery_pay}>
+            {/* 요청사항 */}
             <div className="pay_request_container">
               <p className="pay_req_title">요청사항</p>
               <div className="pay_req_default01 font_02">
@@ -136,6 +177,8 @@ export default function PaymentPage() {
                   colorScheme="blue"
                   size="lg"
                   spacing="1rem"
+                  isChecked={pd_checkboxValue1}
+                  onChange={(e) => setpd_CheckboxValue1(e.target.checked)}
                 >
                   문 앞에 놓고, 문자주세요.
                 </Checkbox>
@@ -146,6 +189,8 @@ export default function PaymentPage() {
                   colorScheme="blue"
                   size="lg"
                   spacing="1rem"
+                  isChecked={pd_checkboxValue2}
+                  onChange={(e) => setpd_CheckboxValue2(e.target.checked)}
                 >
                   일회용 수저, 포크가 필요해요.
                 </Checkbox>
@@ -159,28 +204,34 @@ export default function PaymentPage() {
                   size={"lg"}
                   mt={"15px"}
                   border={"none"}
+                  value={pd_selectedValue}
+                  onChange={(e) => setpd_SelectedValue(e.target.value)}
                 >
-                  <option value="option1">
+                  <option value="서두르지 않고 안전하게 와주세요.">
                     서두르지 않고 안전하게 와주세요.
                   </option>
-                  <option value="option2">그냥 문 앞에 놓아 주세요.</option>
-                  <option value="option3">벨 누르기 전에 전화 주세요.</option>
-                  <option value="option4">
+                  <option value="그냥 문 앞에 놓아 주세요.">
+                    그냥 문 앞에 놓아 주세요.
+                  </option>
+                  <option value="벨 누르기 전에 전화 주세요.">
+                    벨 누르기 전에 전화 주세요.
+                  </option>
+                  <option value="도착 후 전화주시면 직접 받으러 갈게요.">
                     도착 후 전화주시면 직접 받으러 갈게요.
                   </option>
                 </Select>
-                <div className="request_directbox">
-                  <p>직접 입력</p>
-                  <textarea
-                    className="request_directinput"
-                    value={customInput}
-                    onChange={handleCustomInputChange}
-                    placeholder="요청사항을 입력해주세요."
-                  />
-                  <p>
-                    {customInput.length}/{maxLength}
-                  </p>
-                </div>
+              </div>
+              <div className="request_directbox">
+                <p>직접 입력</p>
+                <textarea
+                  className="request_directinput"
+                  value={pd_textareaValue}
+                  onChange={handlePd_textareaValueChange}
+                  placeholder="요청사항을 입력해주세요."
+                />
+                <p>
+                  {pd_textareaValue.length}/{maxLength}
+                </p>
               </div>
             </div>
 
@@ -216,7 +267,7 @@ export default function PaymentPage() {
             <div className="pay_amount_container">
               <div className="pay_amount_detailbox">
                 <p className="pay_detailkind">상품금액</p>
-                <p className="pay_detailcash">{goodPrice} 원</p>
+                <p className="pay_detailcash">{totalAmount} 원</p>
                 <p className="pay_detailkind">추가금액</p>
                 <p className="pay_detailcash">{extraPrice} 원</p>
                 <p className="pay_detailkind">배달요금</p>
@@ -225,15 +276,17 @@ export default function PaymentPage() {
               <div className="pay_amount_totalbox">
                 <p className="pay_total">총 결제금액</p>
                 <p className="pay_totalcash">
-                  {goodPrice + extraPrice + deliveryPrice} 원
+                  {totalAmount + extraPrice + deliveryPrice} 원
                 </p>
               </div>
             </div>
 
             {/* 버튼 */}
-            <button className="_payment_paybtn">결제하기</button>
-          </form>
-        </div>
+            <button className="_payment_paybtn" type="submit">
+              결제하기
+            </button>
+          </div>
+        </form>
       </div>
 
       <Modal isOpen={isOpen} onClose={onClose} size={"xl"}>

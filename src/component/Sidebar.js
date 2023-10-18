@@ -13,7 +13,7 @@ import React, { useContext, useEffect, useState } from "react";
 import MyAvatar from "./MyAvatar";
 import NotifyCard from "./NotifyCard";
 import NonAvatar from "./NonAvatar";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../contexts/UserContext";
 
 export default function Sidebar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
