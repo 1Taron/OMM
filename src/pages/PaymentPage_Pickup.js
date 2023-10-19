@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../component/Header";
 import MenuCard from "../component/MenuCard";
 import "../css/Payment.css";
@@ -34,7 +34,7 @@ export default function PaymentPage_Pickup() {
   const [paymentValue, setPaymentValue] = React.useState("1");
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [goodPrice] = React.useState(10000);
+  const [goodPrice] = React.useState(0);
   const [extraPrice] = React.useState(1000);
   const [deliveryPrice] = React.useState(3000);
 
@@ -49,6 +49,7 @@ export default function PaymentPage_Pickup() {
       setCustomInput(inputText);
     }
   };
+
 
   return (
     <>

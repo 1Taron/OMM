@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Header from "../component/Header";
 import MenuCard from "../component/MenuCard";
 import "../css/Payment.css";
@@ -25,12 +25,29 @@ import {
   Select,
   Radio,
   RadioGroup,
+
 } from "@chakra-ui/react";
 import { Link, Navigate } from "react-router-dom";
 
 import { Search2Icon } from "@chakra-ui/icons";
 
 export default function PaymentPage() {
+  // http://localhost:4000/food로 부터 데이터 받아와서 쏘기
+  const [FoodData, setFoodData] = useState("");
+  const Account = FoodData.Account;
+  useEffect(() => {
+    fetch("http://localhost:4000/food")
+      .then((Response) => {
+        if (Response.status === 200) {
+          return Response.json();
+        } else {
+          throw new Error('데이터 가져오기 실패');
+        }
+      })
+      .then((data) => setFoodData(data))
+      .catch((error) => console.error(error));
+  })
+
   const [paymentValue, setPaymentValue] = React.useState("1");
   const { isOpen, onOpen, onClose } = useDisclosure();
 

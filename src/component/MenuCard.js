@@ -1,10 +1,28 @@
 import React, { useContext, useState } from "react";
 import "../css/MenuCard.css";
 import { Card, Image, CloseButton } from "@chakra-ui/react";
-
-export default function MenuCard({ onProductCountChange }) {
+import { useEffect } from "react";
+export default function MenuCard({ onProductCountChange, username }) {
   const [counter, setCounter] = useState(1);
-  const defaultprice = 10000;
+
+  // http://localhost:4000/food로 부터 데이터 받아와서 쏘기
+  const [FoodData, setFoodData] = useState("");
+  const Account = FoodData.Account;
+  const index = FoodData.Sangchu_index;
+  useEffect(() => {
+    fetch("http://localhost:4000/food")
+      .then((Response) => {
+        if (Response.status === 200) {
+          return Response.json();
+        } else {
+          throw new Error('데이터 가져오기 실패');
+        }
+      })
+      .then((data) => setFoodData(data))
+      .catch((error) => console.error(error));
+  })
+
+  const defaultprice = Account;
 
   function counterPlus() {
     setCounter(counter + 1);
@@ -44,8 +62,9 @@ export default function MenuCard({ onProductCountChange }) {
           />
 
           <div className="menu_contentbox">
-            <p className="menu_ingredient">재료</p>
-            <p className="menu_price font_01">{defaultprice}원</p>
+            <p className="menu_ingredient">상추 X {index}</p>
+
+            <p className="menu_price font_01">{Account} 원</p>
           </div>
           <div>
             <CloseButton size={"lg"} />

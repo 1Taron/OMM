@@ -121,8 +121,6 @@ export default function FoodSelect() {
                     <button className="Select_btn" onClick={SaveInfo}>선택 완료</button>
                 </div>
             </main>
-
-
         </>
     );
 }
