@@ -3,11 +3,6 @@ import Header from "../component/Header";
 import MenuCard from "../component/MenuCard";
 import "../css/Payment.css";
 import {
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
   useDisclosure,
   Stack,
   InputGroup,
@@ -25,7 +20,6 @@ import {
   Select,
   Radio,
   RadioGroup,
-
 } from "@chakra-ui/react";
 import { Link, Navigate } from "react-router-dom";
 
@@ -34,19 +28,19 @@ import { Search2Icon } from "@chakra-ui/icons";
 export default function PaymentPage() {
   // http://localhost:4000/food로 부터 데이터 받아와서 쏘기
   const [FoodData, setFoodData] = useState("");
-  const Account = FoodData.Account;
   useEffect(() => {
     fetch("http://localhost:4000/food")
       .then((Response) => {
         if (Response.status === 200) {
           return Response.json();
         } else {
-          throw new Error('데이터 가져오기 실패');
+          throw new Error("데이터 가져오기 실패");
         }
       })
       .then((data) => setFoodData(data))
       .catch((error) => console.error(error));
-  })
+  }, []);
+  const Account1 = FoodData.Account;
 
   const [paymentValue, setPaymentValue] = React.useState("1");
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -80,11 +74,11 @@ export default function PaymentPage() {
   const [redirect, setRedirect] = useState(false);
 
   const [totalProductCount, setTotalProductCount] = useState(1);
-  const [totalAmount, setTotalAmount] = useState(10000);
+  const [totalAmount, setTotalAmount] = useState(0);
 
-  const handleProductCountChange = (productCount, totalAmount) => {
+  const handleProductCountChange = (productCount, Account1) => {
     setTotalProductCount(productCount);
-    setTotalAmount(productCount * totalAmount);
+    setTotalAmount(productCount * Account1);
   };
 
   async function delivery_pay(e) {
@@ -284,7 +278,9 @@ export default function PaymentPage() {
             <div className="pay_amount_container">
               <div className="pay_amount_detailbox">
                 <p className="pay_detailkind">상품금액</p>
-                <p className="pay_detailcash">{totalAmount} 원</p>
+                <p className="pay_detailcash">
+                  {totalProductCount === 1 ? Account1 : totalAmount} 원
+                </p>
                 <p className="pay_detailkind">추가금액</p>
                 <p className="pay_detailcash">{extraPrice} 원</p>
                 <p className="pay_detailkind">배달요금</p>
@@ -293,7 +289,10 @@ export default function PaymentPage() {
               <div className="pay_amount_totalbox">
                 <p className="pay_total">총 결제금액</p>
                 <p className="pay_totalcash">
-                  {totalAmount + extraPrice + deliveryPrice} 원
+                  {totalProductCount === 1
+                    ? Account1 + extraPrice + deliveryPrice
+                    : totalAmount + extraPrice + deliveryPrice}{" "}
+                  원
                 </p>
               </div>
             </div>

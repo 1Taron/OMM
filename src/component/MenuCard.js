@@ -15,12 +15,12 @@ export default function MenuCard({ onProductCountChange, username }) {
         if (Response.status === 200) {
           return Response.json();
         } else {
-          throw new Error('데이터 가져오기 실패');
+          throw new Error("데이터 가져오기 실패");
         }
       })
       .then((data) => setFoodData(data))
       .catch((error) => console.error(error));
-  })
+  }, []);
 
   const defaultprice = Account;
 
