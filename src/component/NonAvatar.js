@@ -10,7 +10,7 @@ export default function MyAvatar() {
             <Avatar size="2xl" name="" src="https://bit.ly/broken-link" />{" "}
           </WrapItem>{" "}
         </Wrap>
-        <Link to={"/login"}>
+        <Link to={"/user/login"}>
           <Button
             className="sd_pf_mybtn"
             width="100px"

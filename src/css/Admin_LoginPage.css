@@ -1,0 +1,98 @@
+/* .main_outlet {
+  width: 81%;
+  text-align: center;
+  position: absolute;
+  right: 0;
+} */
+.loginmain {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: 80px;
+}
+.login {
+  width: 550px;
+  height: 750px;
+  background-color: white;
+  display: flex;
+  border-radius: 25px;
+  border: solid black 1px;
+  flex-wrap: wrap;
+}
+
+.login > * {
+  width: 100%;
+}
+
+.login_imgcontainer {
+  height: 175px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+.login_imgcontainer > img {
+  margin: auto;
+}
+
+.login_inputcontainer {
+  height: 215px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.2rem;
+}
+.login_inputcontainer > * {
+  display: block;
+  width: 400px;
+  margin: auto;
+  position: relative;
+}
+
+.login_inputcontainer > *:before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 25px;
+  height: 1px;
+  width: 100%;
+  border-bottom: 1px solid var(--dark);
+}
+
+.login_inputcontainer > * > i {
+  height: 90px;
+  line-height: 90px;
+  color: var(--gray6);
+}
+
+.login_inputcontainer > * > input {
+  display: block;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  width: 90%;
+  height: 40px;
+  float: right;
+  border: 0px;
+  font-size: 1.2rem;
+}
+
+.login_btncontainer {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_btncontainer button {
+  width: 400px;
+  height: 50px;
+  border-radius: 15px;
+  color: white;
+  margin-bottom: 20px;
+  background-color: #ffce50;
+  font-size: 1.3rem;
+  border: 0px;
+}
+
+.login_btncontainer button:hover {
+  background-color: #e4b130f5;
+  transition: background 0.15s ease-in-out;
+}

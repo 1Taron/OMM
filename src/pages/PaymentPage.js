@@ -26,7 +26,6 @@ import { Link, Navigate } from "react-router-dom";
 import { Search2Icon } from "@chakra-ui/icons";
 
 export default function PaymentPage() {
-  // http://localhost:4000/food로 부터 데이터 받아와서 쏘기
   const [FoodData, setFoodData] = useState("");
   useEffect(() => {
     fetch("http://localhost:4000/food")
@@ -100,19 +99,21 @@ export default function PaymentPage() {
       requsetToSave.push(pd_textareaValue);
     }
 
+    const pd_kind = "배달";
     const pd_price = totalAmount + extraPrice + deliveryPrice;
     const pd_quantity = totalProductCount;
     const pd_context = requsetToSave.join("_");
     const response = await fetch("http://localhost:4000/payment_delivery", {
       method: "POST",
       body: JSON.stringify({
+        pd_kind,
         pd_quantity,
         pd_price,
         pd_adress,
         pd_context,
       }),
       headers: { "Content-Type": "application/json" },
-      // credentials: "include",
+      credentials: "include",
     });
 
     if (response.status === 200) {
@@ -122,11 +123,10 @@ export default function PaymentPage() {
     }
   }
 
-  if (redirect) return <Navigate to={"/"} />;
+  if (redirect) return <Navigate to={"/user"} />;
 
   return (
     <>
-      <Header />
       <div className="payMain_container font_01">
         <form onSubmit={delivery_pay}>
           <div className="pay_branch_container font_03">
@@ -139,7 +139,7 @@ export default function PaymentPage() {
                 배달
                 <p className="pay_tabsubtitle">(예상시간 : 40 ~ 50분)</p>
               </button>
-              <Link to={"/payment_pickup"}>
+              <Link to={"/user/payment_pickup"}>
                 <button className="__pay_delivery_btn02">
                   포장
                   <p className="pay_tabsubtitle">(픽업시간 : 10분)</p>
@@ -175,7 +175,7 @@ export default function PaymentPage() {
                 <MenuCard onProductCountChange={handleProductCountChange} />
               </div>
               <div className="pay_menu_add">
-                <Link to={"/"}>메뉴 추가하기</Link>
+                <Link to={"/user/"}>메뉴 추가하기</Link>
               </div>
             </div>
 

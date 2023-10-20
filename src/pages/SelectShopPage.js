@@ -6,8 +6,6 @@ import { Map } from "react-kakao-maps-sdk";
 export default function SelectShopPage() {
   return (
     <>
-      <Header />
-      <Outlet />
       <main className="SelectShop">
         <div className="space"></div>
         <Map
@@ -19,7 +17,7 @@ export default function SelectShopPage() {
           <div className="locate_shop_container">
             <ul>
               <li className="locate_url">OO님이 자주가는 매장</li>
-              <Link to="/food">
+              <Link to="/user/food">
                 <li className="shop_locate">
                   원대점
                   <span className="shop_distence">0.8km</span>

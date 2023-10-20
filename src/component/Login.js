@@ -34,42 +34,42 @@ export default function Login() {
   }
 
   if (redirect) {
-    return <Navigate to={"/"} />;
+    return <Navigate to={"/user/"} />;
   }
 
   return (
-    <main className="layout_Mw">
-      <Header />
-      <Outlet />
-      <form className="login" onSubmit={login}>
-        <div className="login_container">
-          <img className="mainImage_1" alt="MainLogo" src="img/logo.svg" />
-          <div className="login_box">
-            <div className="login_idInput">
-              <i class="fa-solid fa-user"></i>
-              <input
-                type={"text"}
-                placeholder="아이디"
-                value={username}
-                onChange={(e) => setUserName(e.target.value)}
-              ></input>
+    <>
+      <main className="layout_Mw">
+        <form className="login" onSubmit={login}>
+          <div className="login_container">
+            <img className="mainImage_1" alt="MainLogo" src="/logo.svg" />
+            <div className="login_box">
+              <div className="login_idInput">
+                <i class="fa-solid fa-user"></i>
+                <input
+                  type={"text"}
+                  placeholder="아이디"
+                  value={username}
+                  onChange={(e) => setUserName(e.target.value)}
+                ></input>
+              </div>
+              <div className="login_pwInput">
+                <i class="fa-solid fa-lock"></i>
+                <input
+                  type={"password"}
+                  placeholder="비밀번호"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                ></input>
+              </div>
             </div>
-            <div className="login_pwInput">
-              <i class="fa-solid fa-lock"></i>
-              <input
-                type={"password"}
-                placeholder="비밀번호"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              ></input>
-            </div>
+            <button className="login_btn">로그인</button>
+            <Link to="/user/register">
+              <button className="register_btn">회원가입</button>
+            </Link>
           </div>
-          <button className="login_btn">로그인</button>
-          <Link to="/register">
-            <button className="register_btn">회원가입</button>
-          </Link>
-        </div>
-      </form>
-    </main>
+        </form>
+      </main>
+    </>
   );
 }

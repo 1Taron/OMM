@@ -50,18 +50,15 @@ export default function PaymentPage_Pickup() {
     }
   };
 
-
   return (
     <>
-      <Header />
-
       <div className="payMain_container font_01">
         <div className="pay_branch_container font_03">
           <p>익산점</p>
         </div>
         <div className="__payMain_container">
           <div className="pay_choice_container">
-            <Link to={"/payment_delivery"}>
+            <Link to={"/user/payment_delivery"}>
               <button className="__pay_pickup_btn01">
                 배달
                 <p className="pay_tabsubtitle">(예상시간 : 40 ~ 50분)</p>

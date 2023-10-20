@@ -9,12 +9,12 @@ export default function Header() {
       <Sidebar />
 
       {/* 인덱스페이지로 이동 로고? */}
-      <Link to={"/"} className="hd_title font_03">
+      <Link to={"/user/"} className="hd_title font_03">
         OMM
       </Link>
 
       {/* 장바구니 아이콘 */}
-      <Link to={"/payment"}>
+      <Link to={"/user/payment_delivery"}>
         <i class="fa-solid fa-cart-shopping" id="shopcart"></i>
       </Link>
     </header>

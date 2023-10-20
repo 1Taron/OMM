@@ -27,24 +27,24 @@ export default function IndexPage() {
           className="eventbannerSwiper"
         >
           <SwiperSlide className="eb_swiper_slide">
-            <img alt="이벤트배너01" src="img/eventbanner01_950px.png" />
+            <img alt="이벤트배너01" src="/eventbanner01_950px.png" />
           </SwiperSlide>
           <SwiperSlide className="eb_swiper_slide">
-            <img alt="이벤트배너02" src="img/eventbanner02_950px.png" />
+            <img alt="이벤트배너02" src="/eventbanner02_950px.png" />
           </SwiperSlide>
           <SwiperSlide className="eb_swiper_slide">
-            <img alt="이벤트배너03" src="img/eventbanner03_950px.png" />
+            <img alt="이벤트배너03" src="/eventbanner03_950px.png" />
           </SwiperSlide>
         </Swiper>
         <div className="mainp_iconbox">
           <div className="mainp_deliveryicon">
-            <Link to={"/select"}>
-              <img alt="배달" src="img/delivery02.png" />
+            <Link to={"/user/select"}>
+              <img alt="배달" src="/delivery02.png" />
             </Link>
           </div>
           <div className="mainp_pickupicon">
-            <Link to={"/select"}>
-              <img alt="포장" src="img/pickup02.png" />
+            <Link to={"/user/select"}>
+              <img alt="포장" src="/pickup02.png" />
             </Link>
           </div>
         </div>

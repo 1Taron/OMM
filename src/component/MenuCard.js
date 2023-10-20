@@ -54,7 +54,7 @@ export default function MenuCard({ onProductCountChange, username }) {
             width={"100%"}
             height={"100%"}
             maxW={{ base: "100%", sm: "300px" }}
-            src="img/salad01.jpg"
+            src="/salad01.jpg"
             alt="Menu1"
             margin={"auto"}
             mt={"10px"}

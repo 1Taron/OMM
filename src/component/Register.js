@@ -10,31 +10,29 @@ export default function Register() {
 
   const setUserName = (e) => {
     setUserData({ ...userData, username: e.target.value });
-  }
+  };
 
   const setpassword = (e) => {
     setUserData({ ...userData, password: e.target.value });
-  }
+  };
 
   const setname = (e) => {
     setUserData({ ...userData, name: e.target.value });
-  }
+  };
 
   const settel = (e) => {
     setUserData({ ...userData, tel: e.target.value });
-  }
+  };
 
   const setemail = (e) => {
     setUserData({ ...userData, email: e.target.value });
-  }
+  };
 
   return (
     <main className="layout_Mw">
-      <Header />
-      <Outlet />
       <form className="register">
         <div className="register_container">
-          <img className="mainImage" alt="MainLogo" src="img/logo.svg" />
+          <img className="mainImage" alt="MainLogo" src="/logo.svg" />
           <div className="regi_inputcontainer">
             <div className="regi_idbox">
               <i class="fa-solid fa-user"></i>
@@ -82,7 +80,7 @@ export default function Register() {
               ></input>
             </div>
           </div>
-          <Link to="/adress">
+          <Link to="/user/register_adress">
             <button className="next_btn">다음</button>
           </Link>
         </div>
