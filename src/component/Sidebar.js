@@ -42,6 +42,27 @@ export default function Sidebar() {
   const mainadress = userInfo?.mainadress;
   const sideadress = userInfo?.sideadress;
 
+  const [notifylists, setNotifyLists] = useState([]);
+  useEffect(() => {
+    const notifylistData = async () => {
+      try {
+        const response = await fetch("http://localhost:4000/ordernotify", {
+          credentials: "include",
+        });
+        const notifylists = await response.json();
+        setNotifyLists(notifylists);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    notifylistData();
+    const intervalId = setInterval(notifylistData, 5000);
+
+    // 컴포넌트가 언마운트되면 setInterval을 해제
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <>
       <IconButton
@@ -117,16 +138,10 @@ export default function Sidebar() {
               <div className="sd_notify_contentbox">
                 {username ? (
                   <>
-                    <NotifyCard />
-                    <NotifyCard />
-                    <NotifyCard />
-                    <NotifyCard />
-                    <NotifyCard />
-                    <NotifyCard />
-                    <NotifyCard />
-                    <NotifyCard />
-                    <NotifyCard />
-                    <NotifyCard />
+                    {notifylists.length > 0 &&
+                      notifylists.map((notifylist) => (
+                        <NotifyCard {...notifylist} key={notifylist._id} />
+                      ))}
                   </>
                 ) : (
                   ""

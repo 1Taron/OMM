@@ -1,5 +1,5 @@
 .orderc_container {
-  width: 600px;
+  width: 700px;
   height: 350px;
   background-color: white;
   border-radius: 20px;
@@ -47,6 +47,7 @@
   height: 50px;
   line-height: 50px;
   font-size: 1.2rem;
+  overflow: scroll;
 }
 
 .orderc_container .order_context_container .__order_context {
@@ -76,10 +77,10 @@
 }
 /* 스크롤 바 없애기 */
 /* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
-.__order_request::-webkit-scrollbar {
+.__order_request::-webkit-scrollbar, .__order_adress::-webkit-scrollbar {
   display: none;
 }
-.__order_request {
+.__order_request, .__order_adress {
   -ms-overflow-style: none; /* 인터넷 익스플로러 */
   scrollbar-width: none; /* 파이어폭스 */
 }
@@ -99,11 +100,12 @@
   border: none;
   border-radius: 15px;
   font-size: 1.5rem;
+  line-height: 40px;
+  cursor: pointer;
 }
 
 .__order_okbtn {
   background-color: rgb(101, 131, 214);
-  cursor: pointer;
 }
 
 .__order_okbtn:hover {
@@ -112,8 +114,68 @@
 
 .__order_nobtn {
   background-color: rgb(216, 78, 78);
-  cursor: pointer;
 }
 .__order_nobtn:hover {
   background-color: rgb(192, 69, 69);
+}
+
+
+/* 모달 */
+.modal_title{
+  font-size: 1.8rem;
+}
+
+.notifym_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.notifym_container > * {
+  width: 100%;
+}
+
+.notifym_container > * > p {
+  font-size: 1.4rem;
+}
+
+.__notify_select {
+  border: 1px solid var(--gray3);
+  width: 100px;
+  height: 30px;
+}
+
+.notifym_btn_container {
+  /* align-items: center;
+  text-align: center; */
+  display: flex;
+  justify-content:space-around;
+  margin-bottom: 10px;
+}
+
+.notifym_btn_container > button {
+  width: 100px;
+  height: 30px;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 10px;
+  line-height: 30px;
+}
+
+.notifym_btn_container > button:nth-of-type(1){
+  background-color: cornflowerblue;
+}
+
+.notifym_btn_container > button:nth-of-type(2){
+  background-color: tomato;
+}
+
+.notifym_btn_container > button:nth-of-type(1):hover{
+  background-color: rgb(89, 131, 210);
+}
+
+.notifym_btn_container > button:nth-of-type(2){
+  background-color: rgb(226, 87, 62);
 }
