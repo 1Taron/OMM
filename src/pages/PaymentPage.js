@@ -22,10 +22,14 @@ import {
   RadioGroup,
 } from "@chakra-ui/react";
 import { Link, Navigate } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
 
 import { Search2Icon } from "@chakra-ui/icons";
 
 export default function PaymentPage() {
+  const { userInfo } = useContext(UserContext);
+  const mainadress = userInfo?.mainadress;
+  const sideadress = userInfo?.sideadress;
   const [FoodData, setFoodData] = useState("");
   useEffect(() => {
     fetch("http://localhost:4000/food")
@@ -60,7 +64,7 @@ export default function PaymentPage() {
 
   // const [pd_quantity, setPd_quantity] = useState("");
   // const [pd_price, setPd_price] = useState("");
-  const [pd_adress, setPd_adress] = useState("전라북도 익산시 익산대로 460");
+  // const [pd_adress, setPd_adress] = useState("전라북도 익산시 익산대로 460");
   // const [pd_context, setPd_context] = useState("");
   const [pd_cover, setPd_cover] = useState("");
   // const [contextCheck01, setContextCheck01] = useState("");
@@ -83,6 +87,10 @@ export default function PaymentPage() {
   async function delivery_pay(e) {
     e.preventDefault();
 
+    //adress push
+    const adressToSave = [];
+    adressToSave.push(mainadress);
+    adressToSave.push(sideadress);
     //requset push
     const requsetToSave = [];
 
@@ -103,6 +111,7 @@ export default function PaymentPage() {
     const pd_price = totalAmount + extraPrice + deliveryPrice;
     const pd_quantity = totalProductCount;
     const pd_context = requsetToSave.join("_");
+    const pd_adress = adressToSave.join("_");
     const response = await fetch("http://localhost:4000/payment_delivery", {
       method: "POST",
       body: JSON.stringify({
@@ -150,8 +159,8 @@ export default function PaymentPage() {
             <div className="pay_adress_container">
               <div className="pay_adress_left">--</div>
               <div className="pay_adress_center">
-                <p>전라북도 익산시 익산대로 460(으)로 배달</p>
-                <p className="pay_tabsubtitle font_02">{pd_adress}</p>
+                <p>{mainadress}(으)로 배달</p>
+                <p className="pay_tabsubtitle font_02">{sideadress}</p>
               </div>
               <div className="pay_adress_right">
                 <Button
