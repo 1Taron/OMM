@@ -13,26 +13,33 @@ import FoodSelect from "./pages/FoodSelect";
 
 import { UserContextProvider } from "./contexts/UserContext";
 import { PayDProvider } from "./contexts/PaymentDContext";
+import Adress from "./component/Adress";
+import { UserProvider } from "./contexts/RegisterContext";
+
 function App() {
   return (
     <>
       <UserContextProvider>
         <PayDProvider>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<IndexPage />} />
-            </Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/register" element={<Register />}></Route>
-            <Route path="/yaggwan" element={<Yaggwan />}></Route>
-            <Route path="/payment_delivery" element={<PaymentPage />}></Route>
-            <Route
-              path="/payment_pickup"
-              element={<PaymentPage_Pickup />}
-            ></Route>
-            <Route path="/select" element={<SelectShopPage />}></Route>
-            <Route path="/food" element={<FoodSelect />}></Route>
-          </Routes>
+          <UserProvider>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<IndexPage />} />
+              </Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/register" element={<Register />}></Route>
+              <Route path="/adress" element={<Adress />}></Route>
+              <Route path="/yaggwan" element={<Yaggwan />}></Route>
+              <Route path="/payment_delivery" element={<PaymentPage />}></Route>
+              <Route
+                path="/payment_pickup"
+                element={<PaymentPage_Pickup />}
+              ></Route>
+              <Route path="/select" element={<SelectShopPage />}></Route>
+              <Route path="/food" element={<FoodSelect />}></Route>
+
+            </Routes>
+          </UserProvider>
         </PayDProvider>
       </UserContextProvider>
     </>

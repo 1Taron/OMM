@@ -2,39 +2,37 @@ import { Link, Navigate, Outlet } from "react-router-dom";
 import Header from "./Header";
 import "../css/Header.css";
 import "../css/Register.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useUser } from "../contexts/RegisterContext";
 
 export default function Register() {
-  const [username, setUserName] = useState("");
-  const [password, setpassword] = useState("");
-  const [name, setname] = useState("");
-  const [tel, settel] = useState("");
-  const [email, setemail] = useState("");
+  const { userData, setUserData } = useUser();
 
-  const [redirect, setRedirect] = useState(false);
-
-  async function register(e) {
-    e.preventDefault();
-
-    const response = await fetch("http://localhost:4000/register", {
-      method: "POST",
-      body: JSON.stringify({ username, password, name, tel, email }),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    if (response.status === 200) {
-      setRedirect(true);
-    } else {
-      alert("이미 존재하는 아이디입니다.");
-    }
+  const setUserName = (e) => {
+    setUserData({ ...userData, username: e.target.value });
   }
-  if (redirect) return <Navigate to={"/yaggwan"} />;
+
+  const setpassword = (e) => {
+    setUserData({ ...userData, password: e.target.value });
+  }
+
+  const setname = (e) => {
+    setUserData({ ...userData, name: e.target.value });
+  }
+
+  const settel = (e) => {
+    setUserData({ ...userData, tel: e.target.value });
+  }
+
+  const setemail = (e) => {
+    setUserData({ ...userData, email: e.target.value });
+  }
 
   return (
     <main className="layout_Mw">
       <Header />
       <Outlet />
-      <form className="register" onSubmit={register}>
+      <form className="register">
         <div className="register_container">
           <img className="mainImage" alt="MainLogo" src="img/logo.svg" />
           <div className="regi_inputcontainer">
@@ -43,8 +41,8 @@ export default function Register() {
               <input
                 type={"text"}
                 placeholder="아이디"
-                value={username}
-                onChange={(e) => setUserName(e.target.value)}
+                value={userData.username}
+                onChange={setUserName}
               ></input>
             </div>
             <div className="regi_pwbox">
@@ -52,8 +50,8 @@ export default function Register() {
               <input
                 type={"password"}
                 placeholder="비밀번호"
-                value={password}
-                onChange={(e) => setpassword(e.target.value)}
+                value={userData.password}
+                onChange={setpassword}
               ></input>
             </div>
             <div className="regi_namebox">
@@ -61,8 +59,8 @@ export default function Register() {
               <input
                 type={"text"}
                 placeholder="이름"
-                value={name}
-                onChange={(e) => setname(e.target.value)}
+                value={userData.name}
+                onChange={setname}
               ></input>
             </div>
             <div className="regi_telbox">
@@ -70,8 +68,8 @@ export default function Register() {
               <input
                 type={"text"}
                 placeholder="전화번호"
-                value={tel}
-                onChange={(e) => settel(e.target.value)}
+                value={userData.tel}
+                onChange={settel}
               ></input>
             </div>
             <div className="regi_emailbox">
@@ -79,12 +77,14 @@ export default function Register() {
               <input
                 type={"text"}
                 placeholder="이메일(필수 X)"
-                value={email}
-                onChange={(e) => setemail(e.target.value)}
+                value={userData.email}
+                onChange={setemail}
               ></input>
             </div>
           </div>
-          <button className="next_btn">다음</button>
+          <Link to="/adress">
+            <button className="next_btn">다음</button>
+          </Link>
         </div>
       </form>
     </main>
