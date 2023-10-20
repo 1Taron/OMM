@@ -62,13 +62,6 @@ export default function PaymentPage() {
     }
   };
 
-  // const [pd_quantity, setPd_quantity] = useState("");
-  // const [pd_price, setPd_price] = useState("");
-  // const [pd_adress, setPd_adress] = useState("전라북도 익산시 익산대로 460");
-  // const [pd_context, setPd_context] = useState("");
-  const [pd_cover, setPd_cover] = useState("");
-  // const [contextCheck01, setContextCheck01] = useState("");
-
   const [pd_checkboxValue1, setpd_CheckboxValue1] = useState(false);
   const [pd_checkboxValue2, setpd_CheckboxValue2] = useState(false);
   const [pd_selectedValue, setpd_SelectedValue] = useState("");
