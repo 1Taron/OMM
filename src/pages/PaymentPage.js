@@ -44,6 +44,8 @@ export default function PaymentPage() {
       .catch((error) => console.error(error));
   }, []);
   const Account1 = FoodData.Account;
+  const food_id = FoodData._id;
+  console.log("_id=======>>>>" + FoodData._id);
 
   const [paymentValue, setPaymentValue] = React.useState("1");
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -119,14 +121,43 @@ export default function PaymentPage() {
     });
 
     if (response.status === 200) {
-      setRedirect(true);
+      // alert("이메일 주소에 @를 입력해주세요");
+      DeleteFoodDoc(e);
+      // setRedirect(true);
     } else {
       alert("실패");
     }
   }
+  const [deletedDocf, setDeletedDocf] = useState(null);
+  async function DeleteFoodDoc(e) {
+    e.preventDefault();
 
+    try {
+      console.log("_id12123123 ====>" + food_id);
+      const response = await fetch("http://localhost:4000/deletefoodDoc", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          documentId: food_id,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setDeletedDocf(data);
+        setRedirect(true);
+      } else {
+        console.log("_id ====>" + food_id);
+        console.error("문서 삭제 실패:", response.statusText);
+      }
+    } catch (error) {
+      console.log("_id ====>" + food_id);
+      console.error("문서 삭제 오류:", error);
+    }
+  }
   if (redirect) return <Navigate to={"/user"} />;
-
   return (
     <>
       <div className="payMain_container font_01">
