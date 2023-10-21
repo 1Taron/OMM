@@ -21,7 +21,8 @@ export default function PaymentPage_Pickup() {
       .catch((error) => console.error(error));
   }, []);
   const Account1 = FoodData.Account;
-
+  const Sang_chu = FoodData.Sangchu_index;
+  const Sangchu = "상추 x" + Sang_chu;
   const [paymentValue, setPaymentValue] = React.useState("1");
 
   const maxLength = 50;
@@ -66,6 +67,7 @@ export default function PaymentPage_Pickup() {
     const pd_quantity = totalProductCount;
     const pd_context = requsetToSave.join("_");
     const pd_adress = " ";
+    const pd_ingredient = Sangchu;
     const response = await fetch("http://localhost:4000/payment_pickup", {
       method: "POST",
       body: JSON.stringify({
@@ -74,6 +76,7 @@ export default function PaymentPage_Pickup() {
         pd_price,
         pd_adress,
         pd_context,
+        pd_ingredient,
       }),
       headers: { "Content-Type": "application/json" },
       credentials: "include",

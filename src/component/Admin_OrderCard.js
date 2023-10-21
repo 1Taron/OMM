@@ -17,6 +17,7 @@ export default function Admin_OrderCard({
   pd_price,
   pd_adress,
   pd_context,
+  pd_ingredient,
   createdAt,
 }) {
   const nowState = ["미 접수", "주문 접수", "배달 중", "배달 완료"];
@@ -178,7 +179,7 @@ export default function Admin_OrderCard({
             {/* <div className="__order_img">이미지</div> */}
             <p className="__order_deliorpick">{pd_kind}</p>
             <p className="__order_adress">{pd_adress}</p>
-            <div className="__order_context">재료</div>
+            <div className="__order_context">{pd_ingredient}</div>
             <div className="__order_remain">
               <p>
                 <time>{format(new Date(createdAt), "yyyy MM d,  hh:mm")}</time>
@@ -246,7 +247,7 @@ export default function Admin_OrderCard({
             {/* <div className="__order_img">이미지</div> */}
             <p className="__order_deliorpick">{pd_kind}</p>
             <p className="__order_adress">{pd_adress}</p>
-            <div className="__order_context">재료</div>
+            <div className="__order_context">{pd_ingredient}</div>
             <div className="__order_remain">
               <p>
                 <time>{format(new Date(createdAt), "yyyy MM d,  hh:mm")}</time>

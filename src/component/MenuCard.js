@@ -40,6 +40,8 @@ export default function MenuCard({ onProductCountChange, username }) {
     // pd_quantity = counter;
   }
 
+  const ingredient1 = "상추 X " + index;
+
   return (
     <>
       <div className="menu_container">
@@ -62,7 +64,7 @@ export default function MenuCard({ onProductCountChange, username }) {
           />
 
           <div className="menu_contentbox">
-            <p className="menu_ingredient">상추 X {index}</p>
+            <p className="menu_ingredient">{ingredient1}</p>
 
             <p className="menu_price font_01">{Account} 원</p>
           </div>

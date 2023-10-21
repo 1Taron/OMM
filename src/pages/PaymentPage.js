@@ -45,8 +45,10 @@ export default function PaymentPage() {
   }, []);
   const Account1 = FoodData.Account;
   const food_id = FoodData._id;
+  const S_index = FoodData.Sangchu_index;
   console.log("_id=======>>>>" + FoodData._id);
 
+  const Sangchu = "상추 x" + S_index;
   const [paymentValue, setPaymentValue] = React.useState("1");
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -107,6 +109,7 @@ export default function PaymentPage() {
     const pd_quantity = totalProductCount;
     const pd_context = requsetToSave.join("_");
     const pd_adress = adressToSave.join("_");
+    const pd_ingredient = Sangchu;
     const response = await fetch("http://localhost:4000/payment_delivery", {
       method: "POST",
       body: JSON.stringify({
@@ -115,6 +118,7 @@ export default function PaymentPage() {
         pd_price,
         pd_adress,
         pd_context,
+        pd_ingredient,
       }),
       headers: { "Content-Type": "application/json" },
       credentials: "include",

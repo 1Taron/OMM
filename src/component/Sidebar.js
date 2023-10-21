@@ -39,6 +39,7 @@ export default function Sidebar() {
   }
 
   const username = userInfo?.username;
+  const name = userInfo?.name;
   const mainadress = userInfo?.mainadress;
   const sideadress = userInfo?.sideadress;
 
@@ -84,7 +85,7 @@ export default function Sidebar() {
         <DrawerContent>
           {/* <DrawerCloseButton /> */}
           <div className="sd_myprofile">
-            <>{username ? <MyAvatar username={username} /> : <NonAvatar />}</>
+            <>{username ? <MyAvatar name={name} /> : <NonAvatar />}</>
           </div>
           <div className="sd_pf_exinfo">
             <div className="sd_pf_mypoint">
