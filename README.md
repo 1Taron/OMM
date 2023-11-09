@@ -1,7 +1,6 @@
-# 참고하셈 보성
+# React Native로 변경
 
-https://chakra-ui.com/docs/styled-system/style-props
-차크라 색 종류 https://chakra-ui.com/docs/styled-system/theme
+https://github.com/Ukdam/OMM_App.git
 
 # Getting Started with Create React App
 
